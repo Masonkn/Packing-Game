@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class Board : MonoBehaviour
 {
-    private GameObject[,] allTiles;
-    private Vector2 tempPosition;
+    //Please put private or otherwise not inspector editable variable here :)
+    [HideInInspector] public GameObject[,] allTiles;//The array that keeps track of where all objects are
 
-
-    public GameObject tromino;
-    public int width = 10;
-    public int height = 16;
+    public GameObject tromino;//The piece
+    public int width;//width and height of the board
+    public int height;
     
     void Start()
     {
-        allTiles = new GameObject[width, height];
-        allTiles[0, height-1] = tromino;
-        GameObject square = Instantiate(tromino, new Vector2(0, height-1), Quaternion.identity);
+        allTiles = new GameObject[width, height];//Making the array the appropriate size
+        allTiles[0, height-1] = tromino;//Putting the piece in the top left of the array
+        GameObject square = Instantiate(tromino, new Vector2(0, height-1), Quaternion.identity);//putting the piece in the top left of the screen
     }
 }
