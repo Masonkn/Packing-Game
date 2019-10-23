@@ -10,11 +10,16 @@ public class Board : MonoBehaviour
     public GameObject tromino;//The piece
     public int width;//width and height of the board
     public int height;
-    
+
     void Start()
     {
         allTiles = new GameObject[width, height];//Making the array the appropriate size
-        allTiles[0, height-1] = tromino;//Putting the piece in the top left of the array
-        GameObject square = Instantiate(tromino, new Vector2(0, height-1), Quaternion.identity);//putting the piece in the top left of the screen
+        SpawnNewPiece();
+    }
+
+    public void SpawnNewPiece()
+    {
+        allTiles[0, height - 1] = tromino;//Putting the piece in the top left of the array
+        GameObject square = Instantiate(tromino, new Vector2(0, height - 1), Quaternion.identity);//putting the piece in the top left of the screen
     }
 }
