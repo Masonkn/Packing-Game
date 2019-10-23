@@ -48,6 +48,10 @@ public class Piece : MonoBehaviour
         while (board.allTiles[column,checkedRow] != null)//If the row is not empty
         {
             checkedRow++;//try the one above
+            if(checkedRow > (board.height -1))//If the game is about to break
+            {
+                board.gameOver.SetActive(true);//Bring up the game over screen
+            }
         }
         return checkedRow;
     }

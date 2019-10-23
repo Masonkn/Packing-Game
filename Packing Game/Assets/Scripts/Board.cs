@@ -8,6 +8,7 @@ public class Board : MonoBehaviour
     [HideInInspector] public GameObject[,] allTiles;//The array that keeps track of where all objects are
 
     public GameObject tromino;//The piece
+    public GameObject gameOver;
     public int width;//width and height of the board
     public int height;
     public float movingDelay;
