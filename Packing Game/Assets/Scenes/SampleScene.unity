@@ -226,6 +226,7 @@ MonoBehaviour:
   tromino: {fileID: 1820280696467730498, guid: fe71389a048cdc246b78e12c20710102, type: 3}
   width: 10
   height: 16
+  movingDelay: 0.1
 --- !u!4 &2000710658
 Transform:
   m_ObjectHideFlags: 0

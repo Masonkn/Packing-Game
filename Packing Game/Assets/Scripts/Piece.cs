@@ -8,29 +8,43 @@ public class Piece : MonoBehaviour
     private int column;
     private int row;
     private int checkedRow;//A number used to see if a row is empty
+    private int direction = 1;//To track whether the piece is moving right or left
+    private float movingCounter;//A timer to see if it should move
     private bool onTop = true;
 
-    private void Start()
+    public float movingDelay;
+
+    void Start()
     {
         board = FindObjectOfType<Board>();//Since the piece is a prefab, public variables won't work and it needs to find the board once it enter the scene.  Hey, thanks for reading this long comment! :)
         column = (int)transform.position.x;//Figuring out it's position
         row = (int)transform.position.y;
     }
+
     void Update()
     {
-        if (Input.GetButtonDown("Submit") && onTop)
+        movingCounter += Time.deltaTime;//Add on the slice of a second since the last frame.
+        if(movingCounter > movingDelay && onTop)//If a certain amount of time has passed
+        {//This code could probably be cleaned up a bit >.>
+            if((column + direction) > board.width-1 || (column + direction) < 0)//If the pice is at the edge of the board 
+            {
+                direction *= -1;//Change the direction
+            }
+            board.PlacePiece(column, row, column + direction, row, this.gameObject);//move piece to the right
+            column += direction;//Update the column
+            movingCounter = 0;//reset the timer
+        }
+
+        if (Input.GetButtonDown("Submit") && onTop)//If space is pressed and it's on top
         {
-            board.allTiles[column, row] = null;//Clearing out the spot it was in
+            board.PlacePiece(column, row, column, FindBottom(), this.gameObject);//Putting the piece in the right place
             board.SpawnNewPiece();//And replacing it
-            transform.position = new Vector2(column, FindBottom());//Moves position to the bottom
-            board.allTiles[column, FindBottom()] = this.gameObject;//Moves index to the bottom
-            onTop = false;
+            onTop = false;//Marking the piece as no longer on top
         }
     }
 
     int FindBottom()
     {
-        checkedRow = 0;//Just a precaution.  If the position is moved after the index and this line wasn't here I think it would break.
         while (board.allTiles[column,checkedRow] != null)//If the row is not empty
         {
             checkedRow++;//try the one above

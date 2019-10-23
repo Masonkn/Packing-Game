@@ -10,6 +10,7 @@ public class Board : MonoBehaviour
     public GameObject tromino;//The piece
     public int width;//width and height of the board
     public int height;
+    public float movingDelay;
 
     void Start()
     {
@@ -21,5 +22,13 @@ public class Board : MonoBehaviour
     {
         allTiles[0, height - 1] = tromino;//Putting the piece in the top left of the array
         GameObject square = Instantiate(tromino, new Vector2(0, height - 1), Quaternion.identity);//putting the piece in the top left of the screen
+        square.GetComponent<Piece>().movingDelay = movingDelay;//Telling the piece what the moving delay is currently
+    }
+
+    public void PlacePiece(int oldColumn, int oldRow, int column, int row, GameObject piece)
+    {
+        allTiles[oldColumn, oldRow] = null;
+        allTiles[column, row] = piece;
+        piece.transform.position = new Vector2(column, row);
     }
 }
