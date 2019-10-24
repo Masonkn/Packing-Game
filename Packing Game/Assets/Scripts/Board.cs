@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,11 +13,32 @@ public class Board : MonoBehaviour
     public int width;//width and height of the board
     public int height;
     public float movingDelay;
+    public int Score;
+
+    private bool isPaused;
 
     void Start()
     {
+
         allTiles = new GameObject[width, height];//Making the array the appropriate size
         SpawnNewPiece();
+    }
+
+    private void OnGUI()
+    {
+        GUI.Label(new Rect(10, 10, 100, 20), "Score:" + Score);
+    }
+
+    public void Update()
+    {
+        if(Input.GetButtonDown("Pause"))
+        {
+            Pause();
+        }
+        else if(Input.GetButtonDown("Submit"))
+        {
+            Score++;
+        }
     }
 
     public void SpawnNewPiece()
@@ -31,5 +53,19 @@ public class Board : MonoBehaviour
         allTiles[oldColumn, oldRow] = null;
         allTiles[column, row] = piece;
         piece.transform.position = new Vector2(column, row);
+    }
+    public void Pause()
+    {
+        if (isPaused)
+        {
+            isPaused = true;
+            Time.timeScale = 0;
+        }
+        else
+        {
+            isPaused = false;
+            Time.timeScale = 1;
+        }
+        
     }
 }

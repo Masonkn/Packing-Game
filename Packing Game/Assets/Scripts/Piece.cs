@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +13,9 @@ public class Piece : MonoBehaviour
     private float movingCounter;//A timer to see if it should move
     private bool onTop = true;
 
+
     public float movingDelay;
+
 
     void Start()
     {
@@ -20,6 +23,9 @@ public class Piece : MonoBehaviour
         column = (int)transform.position.x;//Figuring out it's position
         row = (int)transform.position.y;
     }
+
+
+
 
     void Update()
     {
@@ -51,6 +57,7 @@ public class Piece : MonoBehaviour
             if(checkedRow > (board.height -1))//If the game is about to break
             {
                 board.gameOver.SetActive(true);//Bring up the game over screen
+                //isPaused = true;
             }
         }
         return checkedRow;
