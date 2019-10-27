@@ -7,6 +7,7 @@ public class Board : MonoBehaviour
 {
     //Please put private or otherwise not inspector editable variable here :)
     [HideInInspector] public GameObject[,] allTiles;//The array that keeps track of where all objects are
+    [HideInInspector] public GameObject[,] rightTile;//The array that keeps track of where all objects are
 
     public GameObject tromino;//The piece
     public GameObject gameOver;
@@ -21,7 +22,8 @@ public class Board : MonoBehaviour
     {
 
         allTiles = new GameObject[width, height];//Making the array the appropriate size
-        SpawnNewPiece();
+        SpawnNewTromino();
+        //SpawnNewPiece(0, height - 1);
     }
 
     private void OnGUI()
@@ -41,11 +43,22 @@ public class Board : MonoBehaviour
         }
     }
 
-    public void SpawnNewPiece()
+    public void SpawnNewPiece(int x, int y)
     {
-        allTiles[0, height - 1] = tromino;//Putting the piece in the top left of the array
-        GameObject square = Instantiate(tromino, new Vector2(0, height - 1), Quaternion.identity);//putting the piece in the top left of the screen
+        allTiles[x, y] = tromino;//Putting the piece in the top left of the array
+      //  rightTile[x, y - 1] = tromino;//Putting the piece in the top left of the array
+        
+        GameObject square = Instantiate(tromino, new Vector2(x, y), Quaternion.identity);//putting the piece in the top left of the screen
         square.GetComponent<Piece>().movingDelay = movingDelay;//Telling the piece what the moving delay is currently
+    }
+
+    public void SpawnNewTromino()
+    {
+        SpawnNewPiece(0, height - 1); //Center Block
+        SpawnNewPiece(1, height - 1); //Right Block
+        SpawnNewPiece(0, height - 2); //Top Block
+        //GameObject square = Instantiate(tromino, new Vector2(0, height - 1), Quaternion.identity);//putting the piece in the top left of the screen
+        //square.GetComponent<Piece>().movingDelay = movingDelay;//Telling the piece what the moving delay is currently
     }
 
     public void PlacePiece(int oldColumn, int oldRow, int column, int row, GameObject piece)

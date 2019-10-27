@@ -44,7 +44,8 @@ public class Piece : MonoBehaviour
         if (Input.GetButtonDown("Submit") && onTop)//If space is pressed and it's on top
         {
             board.PlacePiece(column, row, column, FindBottom(), this.gameObject);//Putting the piece in the right place
-            board.SpawnNewPiece();//And replacing it
+            //board.SpawnNewPiece(0, height - 1);//And replacing it
+            board.SpawnNewTromino();//And replacing it
             onTop = false;//Marking the piece as no longer on top
         }
     }
@@ -53,7 +54,7 @@ public class Piece : MonoBehaviour
     {
         while (board.allTiles[column,checkedRow] != null)//If the row is not empty
         {
-            checkedRow++;//try the one above
+            checkedRow ++;//try the one above
             if(checkedRow > (board.height -1))//If the game is about to break
             {
                 board.gameOver.SetActive(true);//Bring up the game over screen
