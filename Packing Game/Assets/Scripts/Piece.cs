@@ -30,7 +30,7 @@ public class Piece : MonoBehaviour
             MoveTopPiece();
         }
 
-        if (Input.GetButtonDown("Submit") && onTop)//If space is pressed and it's on top
+        if (Input.GetButtonDown("Submit") && onTop && Board.isInputEnabled)//If space is pressed and it's on top
         {
             board.PlacePiece(column, row, column, FindBottom(), this.gameObject);//Putting the piece in the right place
             board.SpawnNewPiece();//And replacing it
@@ -57,8 +57,11 @@ public class Piece : MonoBehaviour
             checkedRow ++;//try the one above
             if(checkedRow > (board.height -3))//If the game is about to break
             {
+                Time.timeScale = 0;
                 board.gameOver.SetActive(true);//Bring up the game over screen
                 onTop = false;
+                Board.isInputEnabled = false;
+                Board.isPauseEnabled = false;
                 break;
             }
         }
