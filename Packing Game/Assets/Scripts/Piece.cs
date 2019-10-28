@@ -13,9 +13,7 @@ public class Piece : MonoBehaviour
     private float movingCounter;//A timer to see if it should move
     private bool onTop = true;
 
-
     public float movingDelay;
-
 
     void Start()
     {
@@ -24,30 +22,32 @@ public class Piece : MonoBehaviour
         row = (int)transform.position.y;
     }
 
-
-
-
     void Update()
     {
         movingCounter += Time.deltaTime;//Add on the slice of a second since the last frame.
         if(movingCounter > movingDelay && onTop)//If a certain amount of time has passed
-        {//This code could probably be cleaned up a bit >.>
-            if((column + direction) > board.width-1 || (column + direction) < 0)//If the pice is at the edge of the board 
-            {
-                direction *= -1;//Change the direction
-            }
-            board.PlacePiece(column, row, column + direction, row, this.gameObject);//move piece to the right
-            column += direction;//Update the column
-            movingCounter = 0;//reset the timer
+        {
+            MoveTopPiece();
         }
 
         if (Input.GetButtonDown("Submit") && onTop)//If space is pressed and it's on top
         {
             board.PlacePiece(column, row, column, FindBottom(), this.gameObject);//Putting the piece in the right place
-            //board.SpawnNewPiece(0, height - 1);//And replacing it
-            board.SpawnNewTromino();//And replacing it
+            board.SpawnNewPiece();//And replacing it
             onTop = false;//Marking the piece as no longer on top
         }
+    }
+
+    void MoveTopPiece()
+    {//This code could probably be cleaned up a bit >.>
+        if ((column + direction) > board.width - 1 || (column + direction) < 0)//If the pice is at the edge of the board 
+        {
+            direction *= -1;//Change the direction
+        }
+
+        board.PlacePiece(column, row, column + direction, row, this.gameObject);//move piece to the right
+        column += direction;//Update the column
+        movingCounter = 0;//reset the timer
     }
 
     int FindBottom()
@@ -55,10 +55,11 @@ public class Piece : MonoBehaviour
         while (board.allTiles[column,checkedRow] != null)//If the row is not empty
         {
             checkedRow ++;//try the one above
-            if(checkedRow > (board.height -1))//If the game is about to break
+            if(checkedRow > (board.height -3))//If the game is about to break
             {
                 board.gameOver.SetActive(true);//Bring up the game over screen
-                //isPaused = true;
+                onTop = false;
+                break;
             }
         }
         return checkedRow;

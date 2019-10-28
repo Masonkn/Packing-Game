@@ -20,9 +20,8 @@ public class Board : MonoBehaviour
 
     void Start()
     {
-
         allTiles = new GameObject[width, height];//Making the array the appropriate size
-        SpawnNewTromino();
+        SpawnNewPiece();
         //SpawnNewPiece(0, height - 1);
     }
 
@@ -43,22 +42,13 @@ public class Board : MonoBehaviour
         }
     }
 
-    public void SpawnNewPiece(int x, int y)
+    public void SpawnNewPiece()
     {
-        allTiles[x, y] = tromino;//Putting the piece in the top left of the array
+        allTiles[1, height - 2] = tromino;//Putting the piece in the mostly top, left, center of the array
       //  rightTile[x, y - 1] = tromino;//Putting the piece in the top left of the array
         
-        GameObject square = Instantiate(tromino, new Vector2(x, y), Quaternion.identity);//putting the piece in the top left of the screen
+        GameObject square = Instantiate(tromino, new Vector2(1, height - 2), Quaternion.identity);//putting the piece in the top left of the screen
         square.GetComponent<Piece>().movingDelay = movingDelay;//Telling the piece what the moving delay is currently
-    }
-
-    public void SpawnNewTromino()
-    {
-        SpawnNewPiece(0, height - 1); //Center Block
-        SpawnNewPiece(1, height - 1); //Right Block
-        SpawnNewPiece(0, height - 2); //Top Block
-        //GameObject square = Instantiate(tromino, new Vector2(0, height - 1), Quaternion.identity);//putting the piece in the top left of the screen
-        //square.GetComponent<Piece>().movingDelay = movingDelay;//Telling the piece what the moving delay is currently
     }
 
     public void PlacePiece(int oldColumn, int oldRow, int column, int row, GameObject piece)
@@ -67,6 +57,7 @@ public class Board : MonoBehaviour
         allTiles[column, row] = piece;
         piece.transform.position = new Vector2(column, row);
     }
+
     public void Pause()
     {
         if (isPaused)
