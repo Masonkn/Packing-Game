@@ -16,6 +16,8 @@ public class Board : MonoBehaviour
     public int height;
     public float movingDelay;
     public int Score;
+    public static bool isInputEnabled = true;
+    public static bool isPauseEnabled = true;
 
     private bool unPaused; //aka playing
 
@@ -34,13 +36,19 @@ public class Board : MonoBehaviour
 
     public void Update()
     {
-        if(Input.GetButtonDown("Pause"))
+        if (isPauseEnabled)
         {
-            Pause();
+            if (Input.GetButtonDown("Pause"))
+            {
+                Pause();
+            }
         }
-        else if(Input.GetButtonDown("Submit"))
+        else if (isInputEnabled)
         {
-            Score++;
+            if (Input.GetButtonDown("Submit"))
+            {
+                Score++;
+            }
         }
     }
 
@@ -67,12 +75,15 @@ public class Board : MonoBehaviour
             unPaused = false;
             Time.timeScale = 0;
             pauseMenu.SetActive(true); //Bring up pause screen
+            isInputEnabled = false;
+            
         }
         else
         {
             unPaused = true;
             Time.timeScale = 1;
             pauseMenu.SetActive(false); //Put down the pause screen
+            isInputEnabled = true;
         }
         
     }
