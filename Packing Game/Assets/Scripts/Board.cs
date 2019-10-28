@@ -36,6 +36,8 @@ public class Board : MonoBehaviour
 
     public void Update()
     {
+        tromino.GetComponent<Piece>().movingDelay = movingDelay * 0.99f;
+
         if (isPauseEnabled)
         {
             if (Input.GetButtonDown("Pause"))

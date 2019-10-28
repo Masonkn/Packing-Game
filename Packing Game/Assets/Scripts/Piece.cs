@@ -65,6 +65,7 @@ public class Piece : MonoBehaviour
                 break;
             }
         }
+        board.movingDelay = 0.2f;
         return checkedRow;
     }
 }
