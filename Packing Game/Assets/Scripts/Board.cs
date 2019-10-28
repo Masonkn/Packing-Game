@@ -17,7 +17,7 @@ public class Board : MonoBehaviour
     public float movingDelay;
     public int Score;
 
-    private bool unPaused;
+    private bool unPaused; //aka playing
 
     void Start()
     {
