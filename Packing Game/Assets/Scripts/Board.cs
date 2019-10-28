@@ -11,15 +11,17 @@ public class Board : MonoBehaviour
 
     public GameObject tromino;//The piece
     public GameObject gameOver;
+    public GameObject pauseMenu;
     public int width;//width and height of the board
     public int height;
     public float movingDelay;
     public int Score;
 
-    private bool isPaused;
+    private bool unPaused;
 
     void Start()
     {
+        unPaused = true;
         allTiles = new GameObject[width, height];//Making the array the appropriate size
         SpawnNewPiece();
         //SpawnNewPiece(0, height - 1);
@@ -27,7 +29,7 @@ public class Board : MonoBehaviour
 
     private void OnGUI()
     {
-        GUI.Label(new Rect(10, 10, 100, 20), "Score:" + Score);
+        GUI.Label(new Rect(10, 10, 100, 20), "Score:" + Score); //Instantiates score counter.
     }
 
     public void Update()
@@ -60,16 +62,19 @@ public class Board : MonoBehaviour
 
     public void Pause()
     {
-        if (isPaused)
+        if (unPaused)
         {
-            isPaused = true;
+            unPaused = false;
             Time.timeScale = 0;
+            pauseMenu.SetActive(true); //Bring up pause screen
         }
         else
         {
-            isPaused = false;
+            unPaused = true;
             Time.timeScale = 1;
+            pauseMenu.SetActive(false); //Put down the pause screen
         }
         
     }
+
 }
