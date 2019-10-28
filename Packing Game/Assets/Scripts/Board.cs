@@ -7,7 +7,6 @@ public class Board : MonoBehaviour
 {
     //Please put private or otherwise not inspector editable variable here :)
     [HideInInspector] public GameObject[,] allTiles;//The array that keeps track of where all objects are
-    [HideInInspector] public GameObject[,] rightTile;//The array that keeps track of where all objects are
 
     public GameObject tromino;//The piece
     public GameObject gameOver;
@@ -44,11 +43,12 @@ public class Board : MonoBehaviour
 
     public void SpawnNewPiece()
     {
-        allTiles[1, height - 2] = tromino;//Putting the piece in the mostly top, left, center of the array
-      //  rightTile[x, y - 1] = tromino;//Putting the piece in the top left of the array
+        KingPiece Tromino = new KingPiece();
+        Tromino.CreateNew();
+        //allTiles[1, height - 2] = tromino;//Putting the piece in the mostly top, left, center of the array
         
-        GameObject square = Instantiate(tromino, new Vector2(1, height - 2), Quaternion.identity);//putting the piece in the top left of the screen
-        square.GetComponent<Piece>().movingDelay = movingDelay;//Telling the piece what the moving delay is currently
+        //GameObject square = Instantiate(tromino, new Vector2(1, height - 2), Quaternion.identity);//putting the piece in the top left of the screen
+        //square.GetComponent<Piece>().movingDelay = movingDelay;//Telling the piece what the moving delay is currently
     }
 
     public void PlacePiece(int oldColumn, int oldRow, int column, int row, GameObject piece)
