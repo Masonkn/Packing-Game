@@ -16,6 +16,8 @@ public class KingPiece : MonoBehaviour
 
     public void CreateNew()
     {
+        board = FindObjectOfType<Board>();//For some reason this works better because the board script really wants to finish its start function first
+        SpawnBlock(1, board.height - 2);
         board.allTiles[1, board.height - 2] = board.tromino;
 
         int blockOne = Random.Range(0, 3); //The first block can be placed in any of the four 
@@ -25,8 +27,7 @@ public class KingPiece : MonoBehaviour
         } while (blockTwo != blockOne);
         
         PlaceBlocks(blockOne);
-        PlaceBlocks(blockTwo);
-  
+        //PlaceBlocks(blockTwo);
     }
 
     private void PlaceBlocks(int blockNum)
@@ -54,10 +55,5 @@ public class KingPiece : MonoBehaviour
 
         GameObject square = Instantiate(board.tromino, new Vector2(x,y), Quaternion.identity);//putting the piece in the top left of the screen
         square.GetComponent<Piece>().movingDelay = board.movingDelay;//Telling the piece what the moving delay is currently
-    }
-
-    void Update()
-    {
-        
     }
 }
