@@ -11,6 +11,7 @@ public class Board : MonoBehaviour
     public GameObject tromino;//The piece
     public GameObject gameOver;
     public GameObject pauseMenu;
+    public Piece piece;
     public int width;//width and height of the board
     public int height;
     public float movingDelay;
@@ -35,7 +36,7 @@ public class Board : MonoBehaviour
 
     public void Update()
     {
-        tromino.GetComponent<Piece>().movingDelay = movingDelay * 0.99f;
+        //tromino.GetComponent<Block>().movingDelay = movingDelay * 0.99f;
 
         if (isPauseEnabled)
         {
@@ -55,19 +56,14 @@ public class Board : MonoBehaviour
 
     public void SpawnNewPiece()
     {
-        KingPiece Tromino = new KingPiece();
-        Tromino.CreateNew();
-        //allTiles[1, height - 2] = tromino;//Putting the piece in the mostly top, left, center of the array
-        
-        //GameObject square = Instantiate(tromino, new Vector2(1, height - 2), Quaternion.identity);//putting the piece in the top left of the screen
-        //square.GetComponent<Piece>().movingDelay = movingDelay;//Telling the piece what the moving delay is currently
+        piece.CreateNew();
     }
 
-    public void PlacePiece(int oldColumn, int oldRow, int column, int row, GameObject piece)
+    public void PlaceBlock(int oldColumn, int oldRow, int column, int row, GameObject block)
     {
         allTiles[oldColumn, oldRow] = null;
-        allTiles[column, row] = piece;
-        piece.transform.position = new Vector2(column, row);
+        allTiles[column, row] = block;
+        block.transform.position = new Vector2(column, row);
     }
 
     public void Pause()
