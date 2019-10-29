@@ -32,6 +32,7 @@ public class Piece : MonoBehaviour
 
         if (Input.GetButtonDown("Submit") && onTop && Board.isInputEnabled)//If space is pressed and it's on top
         {
+            board.ScoreAdder();
             board.PlacePiece(column, row, column, FindBottom(), this.gameObject);//Putting the piece in the right place
             board.SpawnNewPiece();//And replacing it
             onTop = false;//Marking the piece as no longer on top
@@ -57,15 +58,20 @@ public class Piece : MonoBehaviour
             checkedRow ++;//try the one above
             if(checkedRow > (board.height -3))//If the game is about to break
             {
-                Time.timeScale = 0;
-                board.gameOver.SetActive(true);//Bring up the game over screen
                 onTop = false;
-                Board.isInputEnabled = false;
-                Board.isPauseEnabled = false;
+                LevelEnd();
                 break;
             }
         }
-        board.movingDelay = 0.2f;
+        board.movingDelay = 0.2f; //TODO: An attempt to reset movingDelay after a piece has been dropped.
         return checkedRow;
+    }
+
+    private void LevelEnd() //Stops time and input, brings up UI.
+    {
+        Time.timeScale = 0;
+        board.gameOver.SetActive(true);//Brings up the game over screen
+        Board.isInputEnabled = false;
+        Board.isPauseEnabled = false;
     }
 }

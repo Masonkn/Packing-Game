@@ -35,7 +35,7 @@ public class Board : MonoBehaviour
 
     public void Update()
     {
-        tromino.GetComponent<Piece>().movingDelay = movingDelay * 0.99f;
+        tromino.GetComponent<Piece>().movingDelay = movingDelay * 0.99f; //TODO: An attempt to speed up the movement of the moving block over time
 
         if (isPauseEnabled)
         {
@@ -44,23 +44,21 @@ public class Board : MonoBehaviour
                 Pause();
             }
         }
-        else if (isInputEnabled)
-        {
-            if (Input.GetButtonDown("Submit"))
-            {
-                Score++;
-            }
-        }
+    }
+
+    public void ScoreAdder() //Adds to the score whenever "Submit" key is pressed (Space).
+    {
+        Score++;
     }
 
     public void SpawnNewPiece()
     {
-        KingPiece Tromino = new KingPiece();
-        Tromino.CreateNew();
-        //allTiles[1, height - 2] = tromino;//Putting the piece in the mostly top, left, center of the array
+        //KingPiece Tromino = new KingPiece();
+        //Tromino.CreateNew();
+        allTiles[1, height - 2] = tromino;//Putting the piece in the mostly top, left, center of the array
         
-        //GameObject square = Instantiate(tromino, new Vector2(1, height - 2), Quaternion.identity);//putting the piece in the top left of the screen
-        //square.GetComponent<Piece>().movingDelay = movingDelay;//Telling the piece what the moving delay is currently
+        GameObject square = Instantiate(tromino, new Vector2(1, height - 2), Quaternion.identity);//putting the piece in the top left of the screen
+        square.GetComponent<Piece>().movingDelay = movingDelay;//Telling the piece what the moving delay is currently
     }
 
     public void PlacePiece(int oldColumn, int oldRow, int column, int row, GameObject piece)
