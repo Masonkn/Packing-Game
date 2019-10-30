@@ -11,9 +11,14 @@ public class Piece : MonoBehaviour
 {
     private Board board;
 
+    void Start()
+    {
+        //For some reason this works better because the board script really wants to finish its start function first
+        board = FindObjectOfType<Board>();
+    }
+
     public void CreateNew()
     {
-        board = FindObjectOfType<Board>();//For some reason this works better because the board script really wants to finish its start function first
         SpawnBlock(1, board.height - 2);
         board.allTiles[1, board.height - 2] = board.tromino;
 
@@ -52,6 +57,8 @@ public class Piece : MonoBehaviour
         board.allTiles[x, y] = board.tromino;//Putting the piece in the mostly top, left, center of the array
 
         GameObject square = Instantiate(board.tromino, new Vector2(x, y), Quaternion.identity);//putting the piece in the top left of the screen
+        Debug.Log(square);
+        Debug.Log(square.GetComponent<Block>());
         square.GetComponent<Block>().movingDelay = board.movingDelay;//Telling the piece what the moving delay is currently
     }
 }
