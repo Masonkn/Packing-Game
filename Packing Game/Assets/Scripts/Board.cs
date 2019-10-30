@@ -11,7 +11,7 @@ public class Board : MonoBehaviour
     public GameObject tromino;//The piece
     public GameObject gameOver;
     public GameObject pauseMenu;
-    public Piece piece;
+    public Spawning piece;
     public int width;//width and height of the board
     public int height;
     public float movingDelay;

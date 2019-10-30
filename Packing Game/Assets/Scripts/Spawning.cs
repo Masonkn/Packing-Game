@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 
-public class Piece : MonoBehaviour
+public class Spawning : MonoBehaviour
 {
     private Board board;
 
