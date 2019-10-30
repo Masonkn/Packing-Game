@@ -14,7 +14,6 @@ public class Block : MonoBehaviour
     private bool onTop = true;
 
     public float movingDelay;
-
     void Awake()
     {
         board = FindObjectOfType<Board>();//Since the piece is a prefab, public variables won't work and it needs to find the board once it enter the scene.  Hey, thanks for reading this long comment! :)
@@ -47,7 +46,7 @@ public class Block : MonoBehaviour
         if(onTop && Board.isInputEnabled)
         {
             board.PlaceBlock(column, row, column, FindBottom(), this.gameObject);//Putting the piece in the right place
-            board.SpawnNewPiece();//And replacing it
+            //board.SpawnNewPiece();//And replacing it
             onTop = false;//Marking the piece as no longer on top
         }
     }
