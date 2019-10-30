@@ -57,8 +57,6 @@ public class Spawning : MonoBehaviour
         board.allTiles[x, y] = board.tromino;//Putting the piece in the mostly top, left, center of the array
 
         GameObject square = Instantiate(board.tromino, new Vector2(x, y), Quaternion.identity);//putting the piece in the top left of the screen
-        Debug.Log(square);
-        Debug.Log(square.GetComponent<Block>());
         square.GetComponent<Block>().movingDelay = board.movingDelay;//Telling the piece what the moving delay is currently
     }
 }
