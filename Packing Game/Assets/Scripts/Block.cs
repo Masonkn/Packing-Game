@@ -14,13 +14,13 @@ public class Block : MonoBehaviour
     private bool onTop = true;
 
     public float movingDelay;
-    private void Awake()
+    void Awake()
     {
         board = FindObjectOfType<Board>();//Since the piece is a prefab, public variables won't work and it needs to find the board once it enter the scene.  Hey, thanks for reading this long comment! :)
     }
+
     void Start()
     {
-        
         column = (int)transform.position.x;//Figuring out it's position
         row = (int)transform.position.y;
     }
@@ -65,6 +65,9 @@ public class Block : MonoBehaviour
 
     int FindBottom()
     {
+        Debug.Log(board);
+        Debug.Log(board.gameGrid);
+        Debug.Log(board.gameGrid[column, checkedRow]);
         while (board.gameGrid[column, checkedRow] != null)//If the row is not empty
         {
             checkedRow++;//try the one above
