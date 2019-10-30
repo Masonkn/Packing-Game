@@ -22,7 +22,8 @@ public class Spawning : MonoBehaviour
     public void CreateNew()
     {
         SpawnBlock(1, board.height - 2, 0);
-        board.allTiles[1, board.height - 2] = board.tromino;
+        board.gameGrid[1, board.height - 2] = board.tromino;
+
 
         int blockOne = Random.Range(0, 3); //The first block can be placed in any of the four
         int blockTwo;
@@ -56,7 +57,7 @@ public class Spawning : MonoBehaviour
 
     private void SpawnBlock(int x, int y, int spot)
     {
-        board.allTiles[x, y] = board.tromino;//Putting the piece in the mostly top, left, center of the array
+        board.gameGrid[x, y] = board.tromino;//Putting the piece in the mostly top, left, center of the array
 
         GameObject block = Instantiate(board.tromino, new Vector2(x, y), Quaternion.identity);//putting the piece in the top left of the screen
         block.GetComponent<Block>().movingDelay = board.movingDelay;//Telling the piece what the moving delay is currently

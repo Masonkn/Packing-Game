@@ -62,20 +62,24 @@ public class Block : MonoBehaviour
 
     int FindBottom()
     {
-        while (board.allTiles[column, checkedRow] != null)//If the row is not empty
+        while (board.gameGrid[column, checkedRow] != null)//If the row is not empty
         {
             checkedRow++;//try the one above
             if (checkedRow > (board.height - 3))//If the game is about to break
             {
-                Time.timeScale = 0;
-                board.gameOver.SetActive(true);//Bring up the game over screen
-                onTop = false;
-                Board.isInputEnabled = false;
-                Board.isPauseEnabled = false;
+                LevelEnd();
                 break;
             }
         }
-        board.movingDelay = 0.2f;
         return checkedRow;
+    }
+
+    private void LevelEnd()
+    {
+        Time.timeScale = 0;
+        board.gameOver.SetActive(true);//Bring up the game over screen
+        onTop = false;
+        Board.isInputEnabled = false;
+        Board.isPauseEnabled = false;
     }
 }
