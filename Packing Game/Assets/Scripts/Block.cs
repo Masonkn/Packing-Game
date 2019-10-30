@@ -47,7 +47,7 @@ public class Block : MonoBehaviour
         if(onTop && Board.isInputEnabled)
         {
             board.PlaceBlock(column, row, column, FindBottom(), this.gameObject);//Putting the piece in the right place
-            board.SpawnNewPiece();//And replacing it
+            //board.SpawnNewPiece();//And replacing it
             onTop = false;//Marking the piece as no longer on top
         }
     }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     [HideInInspector]public Block[] activeBlocks;
+    public Board board;
 
     private void Start()
     {
@@ -22,6 +23,8 @@ public class InputManager : MonoBehaviour
                     block.Fall();
                 }
             }
+            board.SpawnNewPiece();//And replacing it
+
         }
     }
 }
