@@ -14,10 +14,13 @@ public class Block : MonoBehaviour
     private bool onTop = true;
 
     public float movingDelay;
-
-    void Start()
+    private void Awake()
     {
         board = FindObjectOfType<Board>();//Since the piece is a prefab, public variables won't work and it needs to find the board once it enter the scene.  Hey, thanks for reading this long comment! :)
+    }
+    void Start()
+    {
+        
         column = (int)transform.position.x;//Figuring out it's position
         row = (int)transform.position.y;
     }
