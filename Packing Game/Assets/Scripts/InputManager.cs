@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [HideInInspector]public Block[] activeBlocks;
+
+    private void Start()
     {
-        
+        activeBlocks = new Block[3];
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetButtonDown("Submit"))
+        {
+            foreach (Block block in activeBlocks)
+            {
+                block.Fall();
+            }
+        }
     }
 }
