@@ -17,12 +17,13 @@ public class Piece : MonoBehaviour
         SpawnBlock(1, board.height - 2);
         board.allTiles[1, board.height - 2] = board.tromino;
 
-        int blockOne = Random.Range(0, 3); //The first block can be placed in any of the four 
+        int blockOne = Random.Range(0, 3); //The first block can be placed in any of the four
         int blockTwo;
-        do{
+        do
+        {
             blockTwo = Random.Range(0, 3); //The second block cannot be in the same location as the first
         } while (blockTwo != blockOne);
-        
+
         PlaceBlocks(blockOne);
         //PlaceBlocks(blockTwo);
     }
@@ -48,9 +49,9 @@ public class Piece : MonoBehaviour
 
     private void SpawnBlock(int x, int y)
     {
-        board.allTiles[x,y] = board.tromino;//Putting the piece in the mostly top, left, center of the array
+        board.allTiles[x, y] = board.tromino;//Putting the piece in the mostly top, left, center of the array
 
-        GameObject square = Instantiate(board.tromino, new Vector2(x,y), Quaternion.identity);//putting the piece in the top left of the screen
+        GameObject square = Instantiate(board.tromino, new Vector2(x, y), Quaternion.identity);//putting the piece in the top left of the screen
         square.GetComponent<Block>().movingDelay = board.movingDelay;//Telling the piece what the moving delay is currently
     }
 }

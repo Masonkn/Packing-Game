@@ -25,7 +25,7 @@ public class Block : MonoBehaviour
     void Update()
     {
         movingCounter += Time.deltaTime;//Add on the slice of a second since the last frame.
-        if(movingCounter > movingDelay && onTop)//If a certain amount of time has passed
+        if (movingCounter > movingDelay && onTop)//If a certain amount of time has passed
         {
             StrafePiece();
         }
@@ -40,7 +40,7 @@ public class Block : MonoBehaviour
 
     void StrafePiece()
     {//This code could probably be cleaned up a bit >.>
-        if ((column + direction) > board.width - 1 || (column + direction) < 0)//If the pice is at the edge of the board 
+        if ((column + direction) > board.width - 1 || (column + direction) < 0)//If the pice is at the edge of the board
         {
             direction *= -1;//Change the direction
         }
@@ -52,10 +52,10 @@ public class Block : MonoBehaviour
 
     int FindBottom()
     {
-        while (board.allTiles[column,checkedRow] != null)//If the row is not empty
+        while (board.allTiles[column, checkedRow] != null)//If the row is not empty
         {
-            checkedRow ++;//try the one above
-            if(checkedRow > (board.height -3))//If the game is about to break
+            checkedRow++;//try the one above
+            if (checkedRow > (board.height - 3))//If the game is about to break
             {
                 Time.timeScale = 0;
                 board.gameOver.SetActive(true);//Bring up the game over screen

@@ -74,7 +74,7 @@ public class Board : MonoBehaviour
             Time.timeScale = 0;
             pauseMenu.SetActive(true); //Bring up pause screen
             isInputEnabled = false;
-            
+
         }
         else
         {
@@ -83,7 +83,8 @@ public class Board : MonoBehaviour
             pauseMenu.SetActive(false); //Put down the pause screen
             isInputEnabled = true;
         }
-        
+
     }
 
 }
+
