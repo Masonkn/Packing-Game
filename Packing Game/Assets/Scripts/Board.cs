@@ -6,7 +6,7 @@ using UnityEngine;
 public class Board : MonoBehaviour
 {
     //Please put private or otherwise not inspector editable variable here :)
-    [HideInInspector] public GameObject[,] allTiles;//The array that keeps track of where all objects are
+    [HideInInspector] public GameObject[,] gameGrid;//The array that keeps track of where all objects are
 
     public GameObject tromino;//The piece
     public GameObject gameOver;
@@ -24,7 +24,7 @@ public class Board : MonoBehaviour
     void Start()
     {
         unPaused = true;
-        allTiles = new GameObject[width, height];//Making the array the appropriate size
+        gameGrid = new GameObject[width, height];//Making the array the appropriate size
         SpawnNewPiece();
         //SpawnNewPiece(0, height - 1);
     }
@@ -35,8 +35,7 @@ public class Board : MonoBehaviour
     }
 
     public void Update()
-    {
-        //tromino.GetComponent<Block>().movingDelay = movingDelay * 0.99f;
+    { 
 
         if (isPauseEnabled)
         {
@@ -61,8 +60,8 @@ public class Board : MonoBehaviour
 
     public void PlaceBlock(int oldColumn, int oldRow, int column, int row, GameObject block)
     {
-        allTiles[oldColumn, oldRow] = null;
-        allTiles[column, row] = block;
+        gameGrid[oldColumn, oldRow] = null;
+        gameGrid[column, row] = block;
         block.transform.position = new Vector2(column, row);
     }
 
