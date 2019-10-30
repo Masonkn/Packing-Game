@@ -33,11 +33,13 @@ public class Block : MonoBehaviour
         if (Input.GetButtonDown("Submit") && onTop && Board.isInputEnabled)//If space is pressed and it's on top
         {
             board.PlaceBlock(column, row, column, FindBottom(), this.gameObject);//Putting the piece in the right place
-            board.SpawnNewPiece();//And replacing it
+            board.SpawnNewTrominoPiece();//And replacing it
             onTop = false;//Marking the piece as no longer on top
         }
     }
 
+    //Does this move the Tromino left and right, or only change the direction that it is moving?
+    //If it is changing the direction we should probably name it that.
     void StrafePiece()
     {//This code could probably be cleaned up a bit >.>
         if ((column + direction) > board.width - 1 || (column + direction) < 0)//If the pice is at the edge of the board 
@@ -52,7 +54,7 @@ public class Block : MonoBehaviour
 
     int FindBottom()
     {
-        while (board.allTiles[column,checkedRow] != null)//If the row is not empty
+        while (board.gameGrid[column,checkedRow] != null)//If the row is not empty
         {
             checkedRow ++;//try the one above
             if(checkedRow > (board.height -3))//If the game is about to break

@@ -13,6 +13,7 @@ public class Piece : MonoBehaviour
     private float movingCounter;//A timer to see if it should move
     private bool onTop = true;
 
+
     public float movingDelay;
 
     void Start()
@@ -20,6 +21,21 @@ public class Piece : MonoBehaviour
         board = FindObjectOfType<Board>();//Since the piece is a prefab, public variables won't work and it needs to find the board once it enter the scene.  Hey, thanks for reading this long comment! :)
         column = (int)transform.position.x;//Figuring out it's position
         row = (int)transform.position.y;
+
+    void CreateNewTromino()
+    {
+        board = FindObjectOfType<Board>();//For some reason this works better because the board script really wants to finish its start function first
+        SpawnBlock(1, board.height - 2);
+        board.gameGrid[1, board.height - 2] = board.tromino;
+
+        int blockOne = Random.Range(0, 3); //The first block can be placed in any of the four 
+        int blockTwo;
+        do{
+            blockTwo = Random.Range(0, 3); //The second block cannot be in the same location as the first
+        } while (blockTwo == blockOne);
+        
+        PlaceBlocks(blockOne);
+        PlaceBlocks(blockTwo);
     }
 
     void Update()
@@ -53,6 +69,7 @@ public class Piece : MonoBehaviour
 
     int FindBottom()
     {
+
         while (board.allTiles[column,checkedRow] != null)//If the row is not empty
         {
             checkedRow ++;//try the one above
@@ -66,8 +83,9 @@ public class Piece : MonoBehaviour
         board.movingDelay = 0.2f; //TODO: An attempt to reset movingDelay after a piece has been dropped.
         return checkedRow;
     }
+        board.gameGrid[x,y] = board.tromino;//Putting the piece in the mostly top, left, center of the array
 
-    private void LevelEnd() //Stops time and input, brings up UI.
+    void LevelEnd() //Stops time and input, brings up UI.
     {
         Time.timeScale = 0;
         board.gameOver.SetActive(true);//Brings up the game over screen
