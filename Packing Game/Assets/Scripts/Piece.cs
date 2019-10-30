@@ -7,9 +7,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 
-
-
-
 public class Piece : MonoBehaviour
 {
     private Board board;

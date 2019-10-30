@@ -471,7 +471,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 0}
   piece: {fileID: 2000710660}
   width: 10
-  height: 19
+  height: 17
   movingDelay: 0.2
   Score: 0
 --- !u!4 &2000710658
