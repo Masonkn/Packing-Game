@@ -32,8 +32,8 @@ public class Spawning : MonoBehaviour
             blockTwo = Random.Range(0, 3); //The second block cannot be in the same location as the first
         } while (blockTwo != blockOne);
 
-        PlaceBlocks(blockOne, 1);
-        PlaceBlocks(blockTwo, 2);
+        //PlaceBlocks(blockOne, 1);
+        //PlaceBlocks(blockTwo, 2);
     }
 
     private void PlaceBlocks(int blockNum, int spot)

@@ -17,7 +17,10 @@ public class InputManager : MonoBehaviour
         {
             foreach (Block block in activeBlocks)
             {
-                block.Fall();
+                if (block != null)//This was lazy debugging.  Not needed for trominoes only dominoes and less
+                {
+                    block.Fall();
+                }
             }
         }
     }
