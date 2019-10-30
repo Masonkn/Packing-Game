@@ -6,11 +6,12 @@ using UnityEngine;
 public class Board : MonoBehaviour
 {
     //Please put private or otherwise not inspector editable variable here :)
-    [HideInInspector] public GameObject[,] gameGrid;//The array that keeps track of where all objects are
+    [HideInInspector] public GameObject[,] allTiles;//The array that keeps track of where all objects are
 
     public GameObject tromino;//The piece
     public GameObject gameOver;
     public GameObject pauseMenu;
+    public Piece piece;
     public int width;//width and height of the board
     public int height;
     public float movingDelay;
@@ -23,8 +24,9 @@ public class Board : MonoBehaviour
     void Start()
     {
         unPaused = true;
-        gameGrid = new GameObject[width, height];//Making the array the appropriate size
-        SpawnNewTrominoPiece();// could we not directly call piece.CreateNewTromino(); here??
+        allTiles = new GameObject[width, height];//Making the array the appropriate size
+        SpawnNewPiece();
+        //SpawnNewPiece(0, height - 1);
     }
 
     private void OnGUI()
@@ -34,7 +36,7 @@ public class Board : MonoBehaviour
 
     public void Update()
     {
-        tromino.GetComponent<Piece>().movingDelay = movingDelay * 0.99f; //TODO: An attempt to speed up the movement of the moving block over time
+        //tromino.GetComponent<Block>().movingDelay = movingDelay * 0.99f;
 
         if (isPauseEnabled)
         {
@@ -43,40 +45,25 @@ public class Board : MonoBehaviour
                 Pause();
             }
         }
+        else if (isInputEnabled)
+        {
+            if (Input.GetButtonDown("Submit"))
+            {
+                Score++;
+            }
+        }
     }
 
-    public void ScoreAdder() //Adds to the score whenever "Submit" key is pressed (Space).
+    public void SpawnNewPiece()
     {
-        Score++;
+        piece.CreateNew();
     }
 
-    public void SpawnNewTrominoPiece()
-    {
-
-        KingPiece Tromino = new KingPiece();
-        Tromino.CreateNew();
-        //allTiles[1, height - 2] = tromino;//Putting the piece in the mostly top, left, center of the array
-        
-        //GameObject square = Instantiate(tromino, new Vector2(1, height - 2), Quaternion.identity);//putting the piece in the top left of the screen
-        //square.GetComponent<Piece>().movingDelay = movingDelay;//Telling the piece what the moving delay is currently
-    }
-
-    public void PlacePiece(int oldColumn, int oldRow, int column, int row, GameObject piece)
+    public void PlaceBlock(int oldColumn, int oldRow, int column, int row, GameObject block)
     {
         allTiles[oldColumn, oldRow] = null;
-        allTiles[column, row] = piece;
-        piece.transform.position = new Vector2(column, row);
-
-        piece.CreateNewTromino();
-    }
-
-    //This moves the tromino left and right, correct? if so what does Block.StrafePiece() do? I am confused
-    public void PlaceBlock(int oldColumn, int oldRow, int column, int row, GameObject block)  
-    {
-        gameGrid[oldColumn, oldRow] = null;
-        gameGrid[column, row] = block;
+        allTiles[column, row] = block;
         block.transform.position = new Vector2(column, row);
-
     }
 
     public void Pause()
@@ -87,7 +74,7 @@ public class Board : MonoBehaviour
             Time.timeScale = 0;
             pauseMenu.SetActive(true); //Bring up pause screen
             isInputEnabled = false;
-            
+
         }
         else
         {
@@ -96,7 +83,8 @@ public class Board : MonoBehaviour
             pauseMenu.SetActive(false); //Put down the pause screen
             isInputEnabled = true;
         }
-        
+
     }
 
 }
+

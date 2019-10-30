@@ -622,6 +622,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2000710658}
   - component: {fileID: 2000710657}
+  - component: {fileID: 2000710659}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -644,8 +645,9 @@ MonoBehaviour:
   tromino: {fileID: 1820280696467730498, guid: fe71389a048cdc246b78e12c20710102, type: 3}
   gameOver: {fileID: 1405337026}
   pauseMenu: {fileID: 92850049}
-  width: 5
-  height: 5
+  piece: {fileID: 2000710659}
+  width: 19
+  height: 10
   movingDelay: 0.2
   Score: 0
 --- !u!4 &2000710658
@@ -662,6 +664,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2000710659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000710656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 059b12f1cae3dcf4c90980f11645b9b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2147182283
 GameObject:
   m_ObjectHideFlags: 0
