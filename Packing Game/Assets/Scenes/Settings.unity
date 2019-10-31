@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 65865211}
   - component: {fileID: 65865214}
   m_Layer: 5
-  m_Name: Settings
+  m_Name: Medium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 65865214}
-        m_MethodName: SettingsMenu
+        m_MethodName: PlayGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -427,6 +427,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ffebbaec705c94cb514b0d791a2703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playButton: {fileID: 962207046}
+  mainMenu: {fileID: 1699738974}
 --- !u!4 &881712492
 Transform:
   m_ObjectHideFlags: 0
@@ -455,7 +457,7 @@ GameObject:
   - component: {fileID: 962207046}
   - component: {fileID: 962207049}
   m_Layer: 5
-  m_Name: Play
+  m_Name: Easy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -592,7 +594,7 @@ GameObject:
   - component: {fileID: 994292159}
   - component: {fileID: 994292158}
   m_Layer: 5
-  m_Name: Canvas Quit
+  m_Name: Canvas Hard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -746,7 +748,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PLAY
+  m_Text: EASY
 --- !u!222 &997878038
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -767,7 +769,7 @@ GameObject:
   - component: {fileID: 1454861212}
   - component: {fileID: 1454861211}
   m_Layer: 5
-  m_Name: Name of Game
+  m_Name: Name of Page
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -823,7 +825,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: SPEED PACKING
+  m_Text: SETTINGS
 --- !u!222 &1454861212
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -845,7 +847,7 @@ GameObject:
   - component: {fileID: 1552646151}
   - component: {fileID: 1552646150}
   m_Layer: 5
-  m_Name: Canvas Settings
+  m_Name: Canvas Medium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -945,7 +947,7 @@ GameObject:
   - component: {fileID: 1699738975}
   - component: {fileID: 1699738979}
   m_Layer: 5
-  m_Name: Main Menu
+  m_Name: Settings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1043,6 +1045,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ffebbaec705c94cb514b0d791a2703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playButton: {fileID: 0}
+  mainMenu: {fileID: 881712490}
 --- !u!1 &1719742917
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,7 +1115,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SETTINGS
+  m_Text: MEDIUM
 --- !u!222 &1719742920
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1134,7 +1138,7 @@ GameObject:
   - component: {fileID: 1851929677}
   - component: {fileID: 1851929680}
   m_Layer: 5
-  m_Name: Quit
+  m_Name: Hard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1201,7 +1205,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1851929680}
-        m_MethodName: EndGame
+        m_MethodName: PlayGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1271,7 +1275,7 @@ GameObject:
   - component: {fileID: 2093325120}
   - component: {fileID: 2093325119}
   m_Layer: 5
-  m_Name: Canvas Play
+  m_Name: Canvas Easy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1425,7 +1429,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: QUIT
+  m_Text: HARD
 --- !u!222 &2112719653
 CanvasRenderer:
   m_ObjectHideFlags: 0
