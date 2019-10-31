@@ -11,6 +11,7 @@ public class Board : MonoBehaviour
     public GameObject tromino;//The piece
     public GameObject gameOver;
     public GameObject pauseMenu;
+    public GameObject quitButton;
 
     public Spawning piece;
     public int width;//width and height of the board
@@ -21,6 +22,7 @@ public class Board : MonoBehaviour
     public static bool isPauseEnabled = true;
 
     private bool unPaused; //aka playing
+
 
     void Start()
     {
@@ -74,7 +76,7 @@ public class Board : MonoBehaviour
             Time.timeScale = 0;
             pauseMenu.SetActive(true); //Bring up pause screen
             isInputEnabled = false;
-
+            quitButton.SetActive(true);
         }
         else
         {
@@ -82,6 +84,8 @@ public class Board : MonoBehaviour
             Time.timeScale = 1;
             pauseMenu.SetActive(false); //Put down the pause screen
             isInputEnabled = true;
+            quitButton.SetActive(false);
+
         }
 
     }

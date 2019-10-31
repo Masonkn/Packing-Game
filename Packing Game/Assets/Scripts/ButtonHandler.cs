@@ -14,9 +14,14 @@ public class ButtonHandler : MonoBehaviour
     {
         SceneManager.LoadScene("Settings", LoadSceneMode.Single);
     }
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+    }
     public void EndGame()
     {
         Application.Quit();
     }
+
     //TODO: Create methods that influence difficulty in three modes (Maybe by changing the speed of cubes).
 }
