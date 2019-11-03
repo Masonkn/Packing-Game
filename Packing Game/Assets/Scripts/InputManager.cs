@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,14 +15,20 @@ public class InputManager : MonoBehaviour
 
     void Update()
     {
+        List<int> blockBottoms = new List<int>();
         if (Input.GetButtonDown("Submit"))
         {
+            //Finds the Highest row for each block and adds it to the List
             foreach (Block block in activeBlocks)
             {
-                if (block != null)//This was lazy debugging.  Not needed for trominoes only dominoes and less
-                {
-                    block.Fall();
-                }
+                blockBottoms.Add(block.FindTheDifference());
+            }
+            //Finds the highest row of all blocks
+            int highestRow = Math.Min(Math.Min(blockBottoms[0], blockBottoms[1]), blockBottoms[2]);
+            //Each block falls the same number of spaces
+            foreach (Block block in activeBlocks)
+            {
+                block.Fall(highestRow);
             }
             board.SpawnNewPiece();//And replacing it
 

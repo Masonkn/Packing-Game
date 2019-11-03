@@ -33,21 +33,18 @@ public class Block : MonoBehaviour
         {
             StrafePiece();
         }
-
-        if (Input.GetButtonDown("Submit") && onTop && Board.isInputEnabled)//If space is pressed and it's on top
-        {
-            //board.PlaceBlock(column, row, column, FindBottom(), this.gameObject);//Putting the piece in the right place
-            //board.SpawnNewPiece();//And replacing it
-            //onTop = false;//Marking the piece as no longer on top
-        }
     }
 
-    public void Fall()
+    public int FindTheDifference()
+    {
+        return row - FindBottom();
+    }
+
+    public void Fall(int highRow)
     {
         if(onTop && Board.isInputEnabled)
         {
-            board.PlaceBlock(column, row, column, FindBottom(), this.gameObject);//Putting the piece in the right place
-            //board.SpawnNewPiece();//And replacing it
+            board.PlaceBlock(column, row, column, (row - highRow), this.gameObject);//Putting the piece in the right place
             onTop = false;//Marking the piece as no longer on top
         }
     }
@@ -66,19 +63,35 @@ public class Block : MonoBehaviour
 
     int FindBottom()
     {
-        Debug.Log(board);
-        Debug.Log(board.gameGrid);
-        Debug.Log(board.gameGrid[column, checkedRow]);
-        while (board.gameGrid[column, checkedRow] != null)//If the row is not empty
+        int checkFromTop = board.height - 4;
+        while (board.gameGrid[column, checkFromTop] == null)//  checkFromTop == 0)//If the row is not empty
         {
-            checkedRow++;//try the one above
-            if (checkedRow > (board.height - 3))//If the game is about to break
+           
+            checkFromTop--;//try the one below
+            //dont let the counter dip below zero
+            if (checkFromTop == 0)
             {
-                LevelEnd();
-                break;
+                return checkFromTop;
             }
         }
-        return checkedRow;
+        //LevelEnd logic not working
+        //if (board.gameGrid[column, checkFromTop] != null)
+        //{
+        //    LevelEnd();
+        //}
+        return checkFromTop + 1;
+
+        // old Find bottom method. Could be helpful in making new method work.
+        //while (board.gameGrid[column, checkedRow] != null)//If the row is not empty
+        //{
+        //    checkedRow++;//try the one above
+        //    if (checkedRow > (board.height - 3))//If the game is about to break
+        //    {
+        //        LevelEnd();
+        //        break;
+        //    }
+        //}
+        //return checkedRow;
     }
 
     private void LevelEnd()
