@@ -37,7 +37,6 @@ public class Board : MonoBehaviour
     {
         for (int i = 0; i < width; i++)
         {
-            Debug.Log("I'm here!");
             GameObject.Instantiate(boundingBlock, new Vector2(i, -1), Quaternion.identity);
         }
     }
