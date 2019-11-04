@@ -12,6 +12,7 @@ public class Board : MonoBehaviour
     public GameObject gameOver;
     public GameObject pauseMenu;
     public GameObject quitButton;
+    public GameObject boundingBlock;
 
     public Spawning piece;
     public int width;//width and height of the board
@@ -29,10 +30,19 @@ public class Board : MonoBehaviour
         unPaused = true;
         gameGrid = new GameObject[width, height];//Making the array the appropriate size
         SpawnNewPiece();
-        //SpawnNewPiece(0, height - 1);
+        BuildBoundingBox();
     }
 
-    private void OnGUI()
+    void BuildBoundingBox()
+    {
+        for (int i = 0; i < width; i++)
+        {
+            Debug.Log("I'm here!");
+            GameObject.Instantiate(boundingBlock, new Vector2(i, -1), Quaternion.identity);
+        }
+    }
+
+    void OnGUI()
     {
         GUI.Label(new Rect(10, 10, 100, 20), "Score:" + Score); //Instantiates score counter.
     }

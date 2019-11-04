@@ -842,6 +842,8 @@ MonoBehaviour:
   gameOver: {fileID: 236961626}
   pauseMenu: {fileID: 335009542}
   quitButton: {fileID: 1982542755}
+  boundingBlock: {fileID: 8526853197252442965, guid: dcfbf1eaca6bc29439f54112c87f3f00,
+    type: 3}
   piece: {fileID: 1405582393}
   width: 10
   height: 15
