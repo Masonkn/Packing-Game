@@ -18,7 +18,7 @@ public class Board : MonoBehaviour
     public int width;//width and height of the board
     public int height;
     public float movingDelay;
-    public int Score;
+    public int score;
     public static bool isInputEnabled = true;
     public static bool isPauseEnabled = true;
 
@@ -43,7 +43,7 @@ public class Board : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.Label(new Rect(10, 10, 100, 20), "Score:" + Score); //Instantiates score counter.
+        GUI.Label(new Rect(10, 10, 100, 20), "Score:" + score); //Instantiates score counter.
     }
 
     public void Update()
@@ -60,7 +60,7 @@ public class Board : MonoBehaviour
         {
             if (Input.GetButtonDown("Submit"))
             {
-                Score++;
+                score++;
             }
         }
     }
