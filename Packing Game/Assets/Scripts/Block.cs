@@ -68,10 +68,10 @@ public class Block : MonoBehaviour
         {
            
             checkFromTop--;//try the one below
-            //dont let the counter dip below zero
-            if (checkFromTop == 0)
+            //dont let the counter check below zero
+            if (checkFromTop == -1)
             {
-                return checkFromTop;
+                break;
             }
         }
         //LevelEnd logic not working
