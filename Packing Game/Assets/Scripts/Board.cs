@@ -11,7 +11,7 @@ public class Board : MonoBehaviour
     public GameObject tromino;//The piece
     public GameObject gameOver;
     public GameObject pauseMenu;
-    public GameObject quitButton;
+    public GameObject mainMenuButton;
     public GameObject boundingBlock;
 
     public Spawning piece;
@@ -30,16 +30,16 @@ public class Board : MonoBehaviour
         unPaused = true;
         gameGrid = new GameObject[width, height];//Making the array the appropriate size
         SpawnNewPiece();
-        //BuildBoundingBox();
+        BuildBoundingBox();
     }
 
-    //void BuildBoundingBox()
-    //{
-    //    for (int i = 0; i < width; i++)
-    //    {
-    //        GameObject.Instantiate(boundingBlock, new Vector2(i, -1), Quaternion.identity);
-    //    }
-    //}
+    void BuildBoundingBox()
+    {
+        for (int i = 0; i < width; i++)
+        {
+            GameObject.Instantiate(boundingBlock, new Vector2(i, -1), Quaternion.identity);
+        }
+    }
 
     void OnGUI()
     {
@@ -85,7 +85,7 @@ public class Board : MonoBehaviour
             Time.timeScale = 0;
             pauseMenu.SetActive(true); //Bring up pause screen
             isInputEnabled = false;
-            quitButton.SetActive(true);
+            mainMenuButton.SetActive(true);
         }
         else
         {
@@ -93,7 +93,7 @@ public class Board : MonoBehaviour
             Time.timeScale = 1;
             pauseMenu.SetActive(false); //Put down the pause screen
             isInputEnabled = true;
-            quitButton.SetActive(false);
+            mainMenuButton.SetActive(false);
 
         }
 

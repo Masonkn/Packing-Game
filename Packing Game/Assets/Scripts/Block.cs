@@ -106,6 +106,7 @@ public class Block : MonoBehaviour
     {
         Time.timeScale = 0;
         board.gameOver.SetActive(true);//Bring up the game over screen
+        board.mainMenuButton.SetActive(true);
         onTop = false;
         Board.isInputEnabled = false;
         Board.isPauseEnabled = false;
