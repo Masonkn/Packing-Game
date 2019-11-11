@@ -13,6 +13,7 @@ public class Board : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject quitButton;
     public GameObject boundingBlock;
+    public GameObject pauseButton;
 
     public Spawning piece;
     public int width;//width and height of the board
@@ -30,6 +31,7 @@ public class Board : MonoBehaviour
         unPaused = true;
         gameGrid = new GameObject[width, height];//Making the array the appropriate size
         SpawnNewPiece();
+        pauseButton.SetActive(true);
         //BuildBoundingBox();
     }
 

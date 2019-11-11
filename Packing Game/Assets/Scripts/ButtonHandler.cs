@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class ButtonHandler : MonoBehaviour
 {
+    public Board board;
     public void PlayGame()
     {
         SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
@@ -28,7 +29,11 @@ public class ButtonHandler : MonoBehaviour
     }
     public void Pause()
     {
-
+        board.Pause();
+    }
+    public void Resume()
+    {
+        board.Pause();
     }
 
     //TODO: Create methods that influence difficulty in three modes (Maybe by changing the speed of cubes).
