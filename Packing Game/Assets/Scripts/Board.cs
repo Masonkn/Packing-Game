@@ -30,16 +30,16 @@ public class Board : MonoBehaviour
         unPaused = true;
         gameGrid = new GameObject[width, height];//Making the array the appropriate size
         SpawnNewPiece();
-        BuildBoundingBox();
+        //BuildBoundingBox();
     }
 
-    void BuildBoundingBox()
-    {
-        for (int i = 0; i < width; i++)
-        {
-            GameObject.Instantiate(boundingBlock, new Vector2(i, -1), Quaternion.identity);
-        }
-    }
+    //void BuildBoundingBox()
+    //{
+    //    for (int i = 0; i < width; i++)
+    //    {
+    //        GameObject.Instantiate(boundingBlock, new Vector2(i, -1), Quaternion.identity);
+    //    }
+    //}
 
     void OnGUI()
     {
