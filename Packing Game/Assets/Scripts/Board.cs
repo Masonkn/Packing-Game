@@ -31,6 +31,7 @@ public class Board : MonoBehaviour
         gameGrid = new GameObject[width, height];//Making the array the appropriate size
         SpawnNewPiece();
         BuildBoundingBox();
+        LevelEnd(false);
     }
 
     void BuildBoundingBox()
@@ -97,6 +98,22 @@ public class Board : MonoBehaviour
 
         }
 
+    }
+
+    public void LevelEnd(bool levelEnd)
+    {
+        if (levelEnd)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1; 
+        }
+        gameOver.SetActive(levelEnd);//Bring up the game over screen
+        mainMenuButton.SetActive(levelEnd);
+        isInputEnabled = !levelEnd;
+        isPauseEnabled = !levelEnd;
     }
 
 }
