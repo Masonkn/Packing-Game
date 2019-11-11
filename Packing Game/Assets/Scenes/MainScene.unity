@@ -1462,7 +1462,7 @@ MonoBehaviour:
   tromino: {fileID: 1820280696467730498, guid: fe71389a048cdc246b78e12c20710102, type: 3}
   gameOver: {fileID: 236961626}
   pauseMenu: {fileID: 335009542}
-  quitButton: {fileID: 1982542755}
+  mainMenuButton: {fileID: 1982542755}
   boundingBlock: {fileID: 8526853197252442965, guid: dcfbf1eaca6bc29439f54112c87f3f00,
     type: 3}
   pauseButton: {fileID: 1264629546}
