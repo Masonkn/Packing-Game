@@ -66,7 +66,8 @@ public class Block : MonoBehaviour
         int checkFromTop = board.height - 4;
         if(board.gameGrid[column, checkFromTop] != null)
         {
-            LevelEnd();
+            onTop = false;
+            board.LevelEnd(true);
         }
 
         while (board.gameGrid[column, checkFromTop] == null)//  checkFromTop == 0)//If the row is not empty
@@ -102,13 +103,5 @@ public class Block : MonoBehaviour
         }
     }
 
-    private void LevelEnd()
-    {
-        Time.timeScale = 0;
-        board.gameOver.SetActive(true);//Bring up the game over screen
-        board.mainMenuButton.SetActive(true);
-        onTop = false;
-        Board.isInputEnabled = false;
-        Board.isPauseEnabled = false;
-    }
+
 }
