@@ -36,6 +36,35 @@ public class Board : MonoBehaviour
         LevelEnd(false);
     }
 
+    public void isFilled()
+    {
+        int fillLine = height - 4;
+        for (int i = 0; i < width; i++)
+        {
+            if (gameGrid[i, fillLine] != null)
+            {
+                LevelEnd(true);
+            }
+        }
+    }
+
+    public void LevelEnd(bool levelEnd)
+    {
+        if (levelEnd)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+        gameOver.SetActive(levelEnd);//Bring up the game over screen
+        mainMenuButton.SetActive(levelEnd);
+        isInputEnabled = !levelEnd;
+        isPauseEnabled = !levelEnd;
+    }
+
+
     void BuildBoundingBox()
     {
         for (int i = 0; i < width; i++)
@@ -102,21 +131,21 @@ public class Board : MonoBehaviour
 
     }
 
-    public void LevelEnd(bool levelEnd)
-    {
-        if (levelEnd)
-        {
-            Time.timeScale = 0;
-        }
-        else
-        {
-            Time.timeScale = 1; 
-        }
-        gameOver.SetActive(levelEnd);//Bring up the game over screen
-        mainMenuButton.SetActive(levelEnd);
-        isInputEnabled = !levelEnd;
-        isPauseEnabled = !levelEnd;
-    }
+    //public void LevelEnd(bool levelEnd)
+    //{
+    //    if (levelEnd)
+    //    {
+    //        Time.timeScale = 0;
+    //    }
+    //    else
+    //    {
+    //        Time.timeScale = 1; 
+    //    }
+    //    gameOver.SetActive(levelEnd);//Bring up the game over screen
+    //    mainMenuButton.SetActive(levelEnd);
+    //    isInputEnabled = !levelEnd;
+    //    isPauseEnabled = !levelEnd;
+    //}
 
 }
 
