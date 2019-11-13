@@ -36,16 +36,19 @@ public class Board : MonoBehaviour
         LevelEnd(false);
     }
 
-    public void isFilled()
+    public bool isFilled()
     {
+        var isfilled = false;
         int fillLine = height - 4;
         for (int i = 0; i < width; i++)
         {
             if (gameGrid[i, fillLine] != null)
             {
                 LevelEnd(true);
+                isfilled = true;
             }
         }
+        return isfilled;
     }
 
     public void LevelEnd(bool levelEnd)

@@ -20,8 +20,10 @@ public class InputManager : MonoBehaviour
         {
             FindRestingPlace(blockBottoms);
             board.score++;
-            board.isFilled();
-            board.SpawnNewPiece();//And replacing it
+            if (!board.isFilled())
+            {
+                board.SpawnNewPiece();//And replacing it
+            }
         }
     }
 
