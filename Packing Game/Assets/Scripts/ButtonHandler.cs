@@ -19,6 +19,10 @@ public class ButtonHandler : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
+    public void MainStore()
+    {
+        SceneManager.LoadScene("MainStore", LoadSceneMode.Single);
+    }
     public void EndGame()
     {
         Application.Quit();
@@ -31,6 +35,7 @@ public class ButtonHandler : MonoBehaviour
     {
         board.Pause();
     }
+    //Maybe we just need a toggle pause method
     public void Resume()
     {
         board.Pause();
