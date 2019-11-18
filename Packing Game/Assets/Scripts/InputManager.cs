@@ -2,11 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour
 {
     [HideInInspector]public Block[] activeBlocks;
     public Board board;
+    
 
     private void Start()
     {
@@ -20,8 +22,14 @@ public class InputManager : MonoBehaviour
         {
             FindRestingPlace(blockBottoms);
             board.score++;
-            board.isFilled();
-            board.SpawnNewPiece();//And replacing it
+            if (!board.isFilled())
+            {
+                board.SpawnNewPiece();//And replacing it
+            }
+            else
+            {
+                ScoreDisplay.UpdateScore(board.score);
+            }
         }
     }
 
