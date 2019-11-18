@@ -27,8 +27,7 @@ public class Spawning : MonoBehaviour
 
         int blockOne = Random.Range(0, 4); //The first block can be placed in any of the four
         int blockTwo;
-        do
-        {
+        do {
             blockTwo = Random.Range(0, 4); //The second block cannot be in the same location as the first
         } while (blockTwo == blockOne);
 

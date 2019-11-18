@@ -25,7 +25,7 @@ public class InputManager : MonoBehaviour
             board.movingDelay *= .99f; //Sppeds up piece every time submit is pressed
             if (!board.isFilled())
             {
-                board.SpawnNewPiece();//And replacing it
+                board.SpawnNewPiece();
             }
             else
             {

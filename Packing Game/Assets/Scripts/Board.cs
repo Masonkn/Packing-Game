@@ -102,24 +102,6 @@ public class Board : MonoBehaviour
         GUI.Label(new Rect(10, 10, 100, 20), "Score:" + score); //Instantiates score counter.
     }
 
-    //void Update()
-    //{ 
-    //    if (isPauseEnabled)
-    //    {
-    //        if (Input.GetButtonDown("Pause"))
-    //        {
-    //            Pause();
-    //        }
-    //    }
-    //    else if (isInputEnabled)
-    //    {
-    //        if (Input.GetButtonDown("Submit"))
-    //        {
-    //            score++;
-    //        }
-    //    }
-    //}
-
     public void PlaceBlock(int oldColumn, int oldRow, int column, int row, GameObject block)
     {
         gameGrid[oldColumn, oldRow] = null;
