@@ -61,6 +61,7 @@ public class Spawning : MonoBehaviour
 
         GameObject block = Instantiate(board.tromino, new Vector2(x, y), Quaternion.identity);//putting the piece in the top left of the screen
         block.GetComponent<Block>().movingDelay = board.movingDelay;//Telling the piece what the moving delay is currently
+        block.layer = 2;
         inputManager.activeBlocks[spot] = block.GetComponent<Block>();
     }
 }

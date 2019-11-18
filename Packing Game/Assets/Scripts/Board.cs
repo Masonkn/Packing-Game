@@ -13,6 +13,7 @@ public class Board : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject mainMenuButton;
     public GameObject boundingBlock;
+    public GameObject floorTile;
     public GameObject pauseButton;
 
     public Spawning piece;
@@ -21,6 +22,8 @@ public class Board : MonoBehaviour
     public float movingDelay;
     public int score;
     public static bool isInputEnabled = true;
+
+    private GameObject newTile;
 
     internal void SpawnNewPiece()
     {
@@ -39,6 +42,7 @@ public class Board : MonoBehaviour
         piece.CreateNew();
         pauseButton.SetActive(true);
         BuildBoundingBox();
+        LayFloorTiles();
         LevelEnd(false);
     }
 
@@ -73,12 +77,23 @@ public class Board : MonoBehaviour
         isPauseEnabled = !levelEnd;
     }
 
-
     void BuildBoundingBox()
     {
         for (int i = 0; i < width; i++)
         {
             GameObject.Instantiate(boundingBlock, new Vector2(i, -1), Quaternion.identity);
+        }
+    }
+
+    void LayFloorTiles()
+    {
+        for(int x = 0; x < width; x++)
+        {
+            for(int y = 0; y < height-3; y++)
+            {
+                newTile = GameObject.Instantiate(floorTile, new Vector2(x, y), Quaternion.identity);
+                newTile.layer = 0;
+            }
         }
     }
 
