@@ -12,7 +12,6 @@ public class ScoreDisplay : MonoBehaviour
     void Start()
     {
         totalScore.text = PlayerPrefs.GetInt("TotalMoney", 0).ToString();
-
     }
 
     // Update is called once per frame

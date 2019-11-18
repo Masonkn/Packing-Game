@@ -21,6 +21,12 @@ public class Board : MonoBehaviour
     public float movingDelay;
     public int score;
     public static bool isInputEnabled = true;
+
+    internal void SpawnNewPiece()
+    {
+        piece.CreateNew();
+    }
+
     public static bool isPauseEnabled = true;
 
     private bool unPaused; //aka playing
@@ -30,7 +36,7 @@ public class Board : MonoBehaviour
     {
         unPaused = true;
         gameGrid = new GameObject[width, height];//Making the array the appropriate size
-        SpawnNewPiece();
+        piece.CreateNew();
         pauseButton.SetActive(true);
         BuildBoundingBox();
         LevelEnd(false);
@@ -81,29 +87,23 @@ public class Board : MonoBehaviour
         GUI.Label(new Rect(10, 10, 100, 20), "Score:" + score); //Instantiates score counter.
     }
 
-    public void Update()
-    { 
-
-        if (isPauseEnabled)
-        {
-            if (Input.GetButtonDown("Pause"))
-            {
-                Pause();
-            }
-        }
-        else if (isInputEnabled)
-        {
-            if (Input.GetButtonDown("Submit"))
-            {
-                score++;
-            }
-        }
-    }
-
-    public void SpawnNewPiece()
-    {
-        piece.CreateNew();
-    }
+    //void Update()
+    //{ 
+    //    if (isPauseEnabled)
+    //    {
+    //        if (Input.GetButtonDown("Pause"))
+    //        {
+    //            Pause();
+    //        }
+    //    }
+    //    else if (isInputEnabled)
+    //    {
+    //        if (Input.GetButtonDown("Submit"))
+    //        {
+    //            score++;
+    //        }
+    //    }
+    //}
 
     public void PlaceBlock(int oldColumn, int oldRow, int column, int row, GameObject block)
     {

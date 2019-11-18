@@ -40,6 +40,4 @@ public class ButtonHandler : MonoBehaviour
     {
         board.Pause();
     }
-
-    //TODO: Create methods that influence difficulty in three modes (Maybe by changing the speed of cubes).
 }
