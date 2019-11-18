@@ -692,7 +692,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 20.755615
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1467,7 +1467,7 @@ MonoBehaviour:
     type: 3}
   pauseButton: {fileID: 1264629546}
   piece: {fileID: 1405582393}
-  width: 10
+  width: 12
   height: 15
   movingDelay: 0.2
   score: 0
