@@ -13,8 +13,11 @@ public class Board : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject mainMenuButton;
     public GameObject boundingBlock;
+    public GameObject boundingBlockleft;
+    public GameObject boundingBlockright;
     public GameObject floorTile;
     public GameObject pauseButton;
+    public GameObject TruckFront;
 
     public Spawning piece;
     public int width;//width and height of the board
@@ -42,8 +45,11 @@ public class Board : MonoBehaviour
         piece.CreateNew();
         pauseButton.SetActive(true);
         BuildBoundingBox();
+        BuildBoundingSides();
+        BuildTruckFront();
         LayFloorTiles();
         LevelEnd(false);
+
     }
 
     public bool isFilled()
@@ -76,12 +82,26 @@ public class Board : MonoBehaviour
         isInputEnabled = !levelEnd;
         isPauseEnabled = !levelEnd;
     }
+    
+    void BuildTruckFront()
+    {
+        GameObject.Instantiate(TruckFront, new Vector2((width - width / 2)-.5f, -2.5f), Quaternion.identity);
+    }
 
     void BuildBoundingBox()
     {
         for (int i = 0; i < width; i++)
         {
             GameObject.Instantiate(boundingBlock, new Vector2(i, -1), Quaternion.identity);
+        }
+    }
+
+    void BuildBoundingSides()
+    {
+        for (int i = 0; i < height-3; i++)
+        {
+            GameObject.Instantiate(boundingBlockleft, new Vector2(-1, i), Quaternion.identity);
+            GameObject.Instantiate(boundingBlockright, new Vector2(width , i ), Quaternion.identity);
         }
     }
 
