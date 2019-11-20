@@ -15,6 +15,7 @@ public class Board : MonoBehaviour
     public GameObject boundingBlock;
     public GameObject floorTile;
     public GameObject pauseButton;
+    public GameObject TruckFront;
 
     public Spawning piece;
     public int width;//width and height of the board
@@ -42,6 +43,7 @@ public class Board : MonoBehaviour
         piece.CreateNew();
         pauseButton.SetActive(true);
         BuildBoundingBox();
+        BuildTruckFront();
         LayFloorTiles();
         LevelEnd(false);
     }
@@ -75,6 +77,11 @@ public class Board : MonoBehaviour
         mainMenuButton.SetActive(levelEnd);
         isInputEnabled = !levelEnd;
         isPauseEnabled = !levelEnd;
+    }
+    
+    void BuildTruckFront()
+    {
+        GameObject.Instantiate(TruckFront, new Vector2((width - width / 2)-.5f, -2.5f), Quaternion.identity);
     }
 
     void BuildBoundingBox()
