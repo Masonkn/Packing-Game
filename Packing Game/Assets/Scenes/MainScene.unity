@@ -1369,9 +1369,19 @@ MonoBehaviour:
   mainMenuButton: {fileID: 1982542755}
   boundingBlock: {fileID: 8526853197252442965, guid: dcfbf1eaca6bc29439f54112c87f3f00,
     type: 3}
+  boundingBlockleft: {fileID: 8480016526137328080, guid: d737a601c58df9b468afe232937facd6,
+    type: 3}
+  boundingBlockright: {fileID: 8298959609892865764, guid: 4d156d1c4db9d8c4bb9f8b9e7301dfb8,
+    type: 3}
+  truckCornerleft: {fileID: 4828858386632359106, guid: 36211e4d8fffc194fbccbdd7470a9bf4,
+    type: 3}
+  truckCornerright: {fileID: 1804577971951120491, guid: d06b60a31b732e44798a757c65cef103,
+    type: 3}
   floorTile: {fileID: 958976723628032237, guid: 27b084313b678ef418d29f8e0f349238,
     type: 3}
   pauseButton: {fileID: 1380218099}
+  TruckFront: {fileID: 2226524528377273073, guid: ce1873a457dbd1e4aafa553f2bdc4630,
+    type: 3}
   piece: {fileID: 1405582393}
   width: 12
   height: 15

@@ -15,9 +15,12 @@ public class Board : MonoBehaviour
     public GameObject boundingBlock;
     public GameObject boundingBlockleft;
     public GameObject boundingBlockright;
+    public GameObject truckCornerleft;
+    public GameObject truckCornerright;
     public GameObject floorTile;
     public GameObject pauseButton;
     public GameObject TruckFront;
+
 
     public Spawning piece;
     public int width;//width and height of the board
@@ -36,7 +39,7 @@ public class Board : MonoBehaviour
     public static bool isPauseEnabled = true;
 
     private bool unPaused; //aka playing
-
+    
 
     void Start()
     {
@@ -103,6 +106,8 @@ public class Board : MonoBehaviour
             GameObject.Instantiate(boundingBlockleft, new Vector2(-1, i), Quaternion.identity);
             GameObject.Instantiate(boundingBlockright, new Vector2(width , i ), Quaternion.identity);
         }
+        GameObject.Instantiate(truckCornerleft, new Vector2(-1, -1), Quaternion.identity);
+        GameObject.Instantiate(truckCornerright, new Vector2(width, -1), Quaternion.identity);
     }
 
     void LayFloorTiles()
