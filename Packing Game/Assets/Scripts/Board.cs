@@ -13,6 +13,8 @@ public class Board : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject mainMenuButton;
     public GameObject boundingBlock;
+    public GameObject boundingBlockleft;
+    public GameObject boundingBlockright;
     public GameObject floorTile;
     public GameObject pauseButton;
 
@@ -42,8 +44,10 @@ public class Board : MonoBehaviour
         piece.CreateNew();
         pauseButton.SetActive(true);
         BuildBoundingBox();
+        BuildBoundingSides();
         LayFloorTiles();
         LevelEnd(false);
+
     }
 
     public bool isFilled()
@@ -82,6 +86,15 @@ public class Board : MonoBehaviour
         for (int i = 0; i < width; i++)
         {
             GameObject.Instantiate(boundingBlock, new Vector2(i, -1), Quaternion.identity);
+        }
+    }
+
+    void BuildBoundingSides()
+    {
+        for (int i = 0; i < height-3; i++)
+        {
+            GameObject.Instantiate(boundingBlockleft, new Vector2(-1, i), Quaternion.identity);
+            GameObject.Instantiate(boundingBlockright, new Vector2(width , i ), Quaternion.identity);
         }
     }
 
