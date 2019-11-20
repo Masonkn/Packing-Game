@@ -1465,7 +1465,7 @@ MonoBehaviour:
   mainMenuButton: {fileID: 1982542755}
   boundingBlock: {fileID: 8526853197252442965, guid: dcfbf1eaca6bc29439f54112c87f3f00,
     type: 3}
-  floorTile: {fileID: 958976723628032237, guid: 27b084313b678ef418d29f8e0f349238,
+  floorTile: {fileID: 4940385722083869277, guid: 0ce086821ac313c45aa9e8e08b40cece,
     type: 3}
   pauseButton: {fileID: 1264629546}
   piece: {fileID: 1405582393}
