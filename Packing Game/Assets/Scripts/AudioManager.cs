@@ -5,10 +5,23 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
+
+    public static AudioManager instance;
     // Start is called before the first frame update
     void Awake()
     {
-        foreach(Sound s in sounds)
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        
+            DontDestroyOnLoad(gameObject);
+
+        foreach (Sound s in sounds)
         {
            s.source = gameObject.AddComponent<AudioSource>();
            s.source.clip = s.clip;

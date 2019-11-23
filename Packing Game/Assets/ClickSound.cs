@@ -11,7 +11,11 @@ public class ClickSound : MonoBehaviour
     private Button button { get { return GetComponent<Button>(); } }
     private AudioSource source { get { return GetComponent<AudioSource>(); } }
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
 
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +23,7 @@ public class ClickSound : MonoBehaviour
         gameObject.AddComponent<AudioSource>();
         source.clip = soundClip;
         source.playOnAwake = false;
+       
 
         button.onClick.AddListener(() => PlaySound());
     }
