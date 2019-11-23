@@ -54,6 +54,8 @@ public class Block : MonoBehaviour
         if ((column + direction) > board.width - 1 || (column + direction) < 0)//If the pice is at the edge of the board
         {
             direction *= -1;//Change the direction
+            FindObjectOfType<AudioManager>().Play("BoxChangeDirection");
+
         }
 
         board.PlaceBlock(column, row, column + direction, row, this.gameObject);//move piece to the right
