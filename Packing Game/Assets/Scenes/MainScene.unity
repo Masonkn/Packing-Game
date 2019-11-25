@@ -1367,7 +1367,7 @@ MonoBehaviour:
   gameOver: {fileID: 236961626}
   pauseMenu: {fileID: 335009542}
   mainMenuButton: {fileID: 1982542755}
-  boundingBlock: {fileID: 8526853197252442965, guid: dcfbf1eaca6bc29439f54112c87f3f00,
+  boundingBlock: {fileID: 2846440160478542906, guid: 8b33662600d9a6c4f846fa2c23de033a,
     type: 3}
   boundingBlockleft: {fileID: 8480016526137328080, guid: d737a601c58df9b468afe232937facd6,
     type: 3}
