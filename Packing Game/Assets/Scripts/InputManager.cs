@@ -8,7 +8,7 @@ public class InputManager : MonoBehaviour
 {
     [HideInInspector]public Block[] activeBlocks;
     public Board board;
-    
+    private AudioManager audioManager;
 
     private void Start()
     {
@@ -21,6 +21,7 @@ public class InputManager : MonoBehaviour
         if (Input.GetButtonDown("Submit") && Board.isInputEnabled)
         {
             FindRestingPlace(blockBottoms);
+            FindObjectOfType<AudioManager>().Play("BoxDrop");
             board.score++;
             board.movingDelay *= .99f; //Sppeds up piece every time submit is pressed
             if (!board.isFilled())

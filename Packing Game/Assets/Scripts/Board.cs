@@ -75,6 +75,9 @@ public class Board : MonoBehaviour
         if (levelEnd)
         {
             Time.timeScale = 0;
+            FindObjectOfType<AudioManager>().Play("CloseDoor");
+            FindObjectOfType<AudioManager>().Play("TruckFull");
+
         }
         else
         {
