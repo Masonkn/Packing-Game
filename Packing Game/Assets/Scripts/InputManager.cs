@@ -30,7 +30,8 @@ public class InputManager : MonoBehaviour
             }
             else
             {
-                ScoreDisplay.UpdateScore(board.score);
+                ScoreDisplay.UpdateTotalMoney(board.score);
+                ScoreDisplay.UpdateHighScore(board.score);
             }
         }
     }
