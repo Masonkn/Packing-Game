@@ -1118,6 +1118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeBlocks: []
   board: {fileID: 1405582394}
+  pieceAcceleration: 0.97
 --- !u!1 &1364119102
 GameObject:
   m_ObjectHideFlags: 0
@@ -1654,13 +1655,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: BoxDrop
-    clip: {fileID: 8300000, guid: 7dba9b2007ceb4845a51ce1f9247d7cb, type: 3}
-    volume: 0.824
+    clip: {fileID: 8300000, guid: 77d682e48525b6047aa6efe43920f56d, type: 3}
+    volume: 0.686
     pitch: 0.96
     source: {fileID: 0}
   - name: BoxChangeDirection
     clip: {fileID: 8300000, guid: 325db51b240c31c44938c1ebc5e82912, type: 3}
-    volume: 0.787
+    volume: 0.579
     pitch: 1.12
     source: {fileID: 0}
   - name: TruckFull
