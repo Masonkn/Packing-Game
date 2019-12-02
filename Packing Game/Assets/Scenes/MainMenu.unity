@@ -422,7 +422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalScore: {fileID: 504786963}
-  highScore: {fileID: 0}
+  highScore: {fileID: 1787114704}
 --- !u!1 &687359072
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,7 +1301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalScore: {fileID: 504786963}
-  highScore: {fileID: 0}
+  highScore: {fileID: 1787114704}
 --- !u!1 &1719742917
 GameObject:
   m_ObjectHideFlags: 0
