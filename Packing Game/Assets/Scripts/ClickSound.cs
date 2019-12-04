@@ -7,28 +7,27 @@ using UnityEngine.UI;
 public class ClickSound : MonoBehaviour
 {
 
-    public AudioClip soundClip;
+    public AudioClip firstSound;
+    public AudioClip secondSound;
+
     private Button button { get { return GetComponent<Button>(); } }
     private AudioSource source { get { return GetComponent<AudioSource>(); } }
 
-    //private void Awake()
-    //{
-    //    DontDestroyOnLoad(gameObject);
-    //}
-
-    // Start is called before the first frame update
     void Start()
     {
         gameObject.AddComponent<AudioSource>();
-        source.clip = soundClip;
+        source.clip = firstSound;
         source.playOnAwake = false;
        
 
-        button.onClick.AddListener(() => PlaySound());
+        button.onClick.AddListener(() => StartCoroutine(FullyPlaySound()));
     }
     
-    void PlaySound()
+    IEnumerator FullyPlaySound()
     {
-        source.PlayOneShot(soundClip);
+        source.PlayOneShot(firstSound);
+        yield return new WaitForSeconds(firstSound.length);
+        yield return new WaitForSeconds(secondSound.length);
+
     }
 }
