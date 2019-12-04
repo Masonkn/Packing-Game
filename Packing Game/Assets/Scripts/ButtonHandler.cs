@@ -29,13 +29,13 @@ public class ButtonHandler : MonoBehaviour
     }
     public void PowerUp()
     {
+
         //Does nothing right now.
     }
     public void Pause()
     {
         board.Pause();
     }
-    //Maybe we just need a toggle pause method
     public void Resume()
     {
         board.Pause();

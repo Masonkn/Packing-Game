@@ -29,18 +29,16 @@ public class Board : MonoBehaviour
     public float movingDelay;
     public int score;
     public static bool isInputEnabled = true;
+    public static bool isPauseEnabled = true;
 
     private GameObject newTile;
+    private bool unPaused; //aka playing
+
 
     internal void SpawnNewPiece()
     {
         piece.CreateNew();
-    }
-
-    public static bool isPauseEnabled = true;
-
-    private bool unPaused; //aka playing
-    
+    }  
 
     void Start()
     {
@@ -57,7 +55,6 @@ public class Board : MonoBehaviour
 
     private void BuildButtons() //TODO: this isn't working for some reason...
     {
-        Debug.Log("I was called!");
         GameObject.Instantiate(pauseButton, new Vector2(0,0), Quaternion.identity);
     }
 
@@ -129,11 +126,6 @@ public class Board : MonoBehaviour
                 newTile.layer = 0;
             }
         }
-    }
-
-    void OnGUI()
-    {
-        GUI.Label(new Rect(10, 10, 100, 20), "Score:" + score); //Instantiates score counter.
     }
 
     public void PlaceBlock(int oldColumn, int oldRow, int column, int row, GameObject block)

@@ -9,7 +9,9 @@ public class InputManager : MonoBehaviour
     [HideInInspector] public Block[] activeBlocks;
     [HideInInspector] public Block[] ghostBlocks;
     public Board board;
+    public Text moneyText;
     public float pieceAcceleration = .99f;
+
     private AudioManager audioManager;
 
     private void Start()
@@ -27,6 +29,7 @@ public class InputManager : MonoBehaviour
             FindRestingPlace(blockBottoms);
             FindObjectOfType<AudioManager>().Play("BoxDrop");
             board.score++;
+            moneyText.text = "Money\nEarned: " + board.score;
             board.movingDelay *= pieceAcceleration; //Sppeds up piece every time submit is pressed
             if (!board.isFilled())
             {
