@@ -35,6 +35,12 @@ public class Block : MonoBehaviour
         }
     }
 
+    //probably dont need this
+    public void Destroy()
+    {
+        board.DestroyBlock(column, row);
+    }
+
     public int FindTheDifference()
     {
         return row - FindBottom();
@@ -48,6 +54,12 @@ public class Block : MonoBehaviour
             onTop = false;//Marking the piece as no longer on top
         }  
     }
+
+    //public void ReorderBlocks()
+    //{
+
+    //    board.PlaceBlock(column,row,)
+    //}
 
     void StrafePiece()
     {//This code could probably be cleaned up a bit >.>
