@@ -95,7 +95,7 @@ public class Board : MonoBehaviour
     
     void BuildTruckFront()
     {
-        GameObject.Instantiate(TruckFront, new Vector2((width - width / 2)-.5f, -3f), Quaternion.identity);
+        GameObject.Instantiate(TruckFront, new Vector2((width - width / 2)-.5f, -3.9f), Quaternion.identity);
     }
 
     void BuildBoundingBox()

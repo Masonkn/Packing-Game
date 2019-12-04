@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class InputManager : MonoBehaviour
 {
     [HideInInspector] public Block[] activeBlocks;
-    [HideInInspector] public Block[] ghostBlocks;
     public Board board;
     public Text moneyText;
     public float pieceAcceleration = .99f;
@@ -17,7 +16,6 @@ public class InputManager : MonoBehaviour
     private void Start()
     {
         activeBlocks = new Block[3];
-        ghostBlocks = activeBlocks;
 
     }
 
