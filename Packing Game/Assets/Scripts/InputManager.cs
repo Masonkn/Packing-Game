@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour
 {
-    [HideInInspector]public Block[] activeBlocks;
+    [HideInInspector] public Block[] activeBlocks;
+    [HideInInspector] public Block[] ghostBlocks;
     public Board board;
     public float pieceAcceleration = .99f;
     private AudioManager audioManager;
@@ -14,6 +15,8 @@ public class InputManager : MonoBehaviour
     private void Start()
     {
         activeBlocks = new Block[3];
+        ghostBlocks = activeBlocks;
+
     }
 
     void Update()
@@ -37,7 +40,7 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    void FindRestingPlace(List<int> blockBottoms)
+    public void FindRestingPlace(List<int> blockBottoms)
     {
         //Finds the Highest row for each block and adds it to the List
         foreach (Block block in activeBlocks)

@@ -9,6 +9,7 @@ public class Board : MonoBehaviour
     [HideInInspector] public GameObject[,] gameGrid;//The array that keeps track of where all objects are
 
     public GameObject tromino;//The piece
+    public GameObject ghostPiece;
     public GameObject gameOver;
     public GameObject pauseMenu;
     public GameObject mainMenuButton;
@@ -54,7 +55,7 @@ public class Board : MonoBehaviour
         BuildButtons();
     }
 
-    private void BuildButtons()
+    private void BuildButtons() //TODO: this isn't working for some reason...
     {
         Debug.Log("I was called!");
         GameObject.Instantiate(pauseButton, new Vector2(0,0), Quaternion.identity);
@@ -140,6 +141,16 @@ public class Board : MonoBehaviour
         gameGrid[oldColumn, oldRow] = null;
         gameGrid[column, row] = block;
         block.transform.position = new Vector2(column, row);
+    }
+
+    public void PlaceGhostBlock(int column, int row, GameObject block) //Same as PlaceBlock but it does not update the gameGrid array.
+    {
+        block.transform.position = new Vector2(column, row);
+    }
+
+    public void SpawnGhostBlock(int column, int row, GameObject ghostPiece) //This needs to spawn on the findrestingplace location everytime a piece moves.
+    {
+        GameObject.Instantiate(ghostPiece, new Vector2(column, row), Quaternion.identity);
     }
 
     public void Pause()
