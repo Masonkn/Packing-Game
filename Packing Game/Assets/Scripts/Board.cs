@@ -24,6 +24,7 @@ public class Board : MonoBehaviour
 
 
     public Spawning piece;
+    public Block blockscript;
     public int width;//width and height of the board
     public int height;
     public float movingDelay;
@@ -94,7 +95,7 @@ public class Board : MonoBehaviour
     
     void BuildTruckFront()
     {
-        GameObject.Instantiate(TruckFront, new Vector2((width - width / 2)-.5f, -2.5f), Quaternion.identity);
+        GameObject.Instantiate(TruckFront, new Vector2((width - width / 2)-.5f, -3f), Quaternion.identity);
     }
 
     void BuildBoundingBox()
@@ -133,6 +134,7 @@ public class Board : MonoBehaviour
         gameGrid[oldColumn, oldRow] = null;
         gameGrid[column, row] = block;
         block.transform.position = new Vector2(column, row);
+        //PlaceGhostBlock(column,row - blockscript.FindTheDifference(),this.gameObject);
     }
 
     public void PlaceGhostBlock(int column, int row, GameObject block) //Same as PlaceBlock but it does not update the gameGrid array.
@@ -140,7 +142,7 @@ public class Board : MonoBehaviour
         block.transform.position = new Vector2(column, row);
     }
 
-    public void SpawnGhostBlock(int column, int row, GameObject ghostPiece) //This needs to spawn on the findrestingplace location everytime a piece moves.
+    public void SpawnGhostBlock(int column, int row) //This needs to spawn on the findrestingplace location everytime a piece moves.
     {
         GameObject.Instantiate(ghostPiece, new Vector2(column, row), Quaternion.identity);
     }

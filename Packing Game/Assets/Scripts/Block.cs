@@ -47,6 +47,7 @@ public class Block : MonoBehaviour
             board.PlaceBlock(column, row, column, (row - highRow), this.gameObject);//Putting the piece in the right place
             onTop = false;//Marking the piece as no longer on top
         }
+        
     }
 
     void StrafePiece()
@@ -57,8 +58,7 @@ public class Block : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("BoxChangeDirection");
 
         }
-
-        board.PlaceBlock(column, row, column + direction, row, this.gameObject);//move piece to the right
+        //board.PlaceBlock(column, row, column + direction, row, this.gameObject);//move piece to the right
         column += direction;//Update the column
         movingCounter = 0;//reset the timer
     }

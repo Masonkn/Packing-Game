@@ -12,6 +12,7 @@ public class Spawning : MonoBehaviour
     private Board board;
 
     public InputManager inputManager;
+    public Block blockscript;
 
     void Start()
     {
@@ -21,7 +22,8 @@ public class Spawning : MonoBehaviour
 
     public void CreateNew()
     {
-        SpawnBlock(1, board.height - 2, 0);
+        SpawnBlock(1, board.height - 2, 0); //spawns first piece
+
         board.gameGrid[1, board.height - 2] = board.tromino;
 
 
@@ -31,8 +33,8 @@ public class Spawning : MonoBehaviour
             blockTwo = Random.Range(0, 4); //The second block cannot be in the same location as the first
         } while (blockTwo == blockOne);
 
-        PlaceBlocks(blockOne, 1);
-        PlaceBlocks(blockTwo, 2);
+        PlaceBlocks(blockOne, 1); 
+        PlaceBlocks(blockTwo, 2); 
     }
 
     private void PlaceBlocks(int blockNum, int spot)//Creates a piece
@@ -59,6 +61,7 @@ public class Spawning : MonoBehaviour
         board.gameGrid[x, y] = board.tromino;//Putting the piece in the mostly top, left, center of the array
 
         GameObject block = Instantiate(board.tromino, new Vector2(x, y), Quaternion.identity);//putting the piece in the top left of the screen
+        //board.SpawnGhostBlock(x,y-blockscript.FindTheDifference());
         block.GetComponent<Block>().movingDelay = board.movingDelay;//Telling the piece what the moving delay is currently
         block.layer = 2;
         inputManager.activeBlocks[spot] = block.GetComponent<Block>();
