@@ -35,7 +35,7 @@ public class Spawning : MonoBehaviour
         PlaceBlocks(blockTwo, 2);
     }
 
-    private void PlaceBlocks(int blockNum, int spot)
+    private void PlaceBlocks(int blockNum, int spot)//Creates a piece
     {
         switch (blockNum)
         {
