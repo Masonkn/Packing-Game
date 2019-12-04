@@ -1216,7 +1216,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1380218100
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1415,7 +1415,7 @@ MonoBehaviour:
     type: 3}
   piece: {fileID: 1405582393}
   width: 12
-  height: 15
+  height: 18
   movingDelay: 0.2
   score: 0
 --- !u!4 &1405582395

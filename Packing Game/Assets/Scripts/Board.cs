@@ -46,13 +46,18 @@ public class Board : MonoBehaviour
         unPaused = true;
         gameGrid = new GameObject[width, height];//Making the array the appropriate size
         piece.CreateNew();
-        pauseButton.SetActive(true);
         BuildBoundingBox();
         BuildBoundingSides();
         BuildTruckFront();
         LayFloorTiles();
         LevelEnd(false);
+        BuildButtons();
+    }
 
+    private void BuildButtons()
+    {
+        Debug.Log("I was called!");
+        GameObject.Instantiate(pauseButton, new Vector2(0,0), Quaternion.identity);
     }
 
     public bool isFilled()
