@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Board : MonoBehaviour
 {
@@ -76,6 +77,7 @@ public class Board : MonoBehaviour
 
     public void DestroyBlock(int column, int row)
     {
+        //DestroyImmediate(gameGrid[column, row]);
         Destroy(gameGrid[column, row]);
         gameGrid[column, row] = null;
     }
@@ -132,6 +134,39 @@ public class Board : MonoBehaviour
                 newTile = GameObject.Instantiate(floorTile, new Vector2(x, y), Quaternion.identity);
                 newTile.layer = 0;
             }
+        }
+    }
+    public void ReorderBlock(Block[] activeBlocks)
+    {
+        activeBlocks[0].Reorder(1, height - 2);
+
+        int blockOne = Random.Range(0, 4); //The first block can be placed in any of the four
+        int blockTwo;
+        do
+        {
+            blockTwo = Random.Range(0, 4); //The second block cannot be in the same location as the first
+        } while (blockTwo == blockOne);
+
+        PlaceFinder(blockOne, 1, activeBlocks);
+        PlaceFinder(blockTwo, 2, activeBlocks);
+    }
+
+    private void PlaceFinder(int blockNum, int spot, Block[] activeBlocks)//Creates a piece
+    {
+        switch (blockNum)
+        {
+            case 0:
+                activeBlocks[spot].Reorder(1, height - 1);
+                break;
+            case 1:
+                activeBlocks[spot].Reorder(1, height - 3);
+                break;
+            case 2:
+                activeBlocks[spot].Reorder(0, height - 2);
+                break;
+            case 3:
+                activeBlocks[spot].Reorder(2, height - 2);
+                break;
         }
     }
 

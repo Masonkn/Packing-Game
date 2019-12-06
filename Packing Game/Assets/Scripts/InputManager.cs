@@ -39,16 +39,20 @@ public class InputManager : MonoBehaviour
             }
         }
         //else if?
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S)) //Skip Piece
         {
-            foreach (Block block in activeBlocks)
-            {
-                block.Destroy();
-                //block.ReorderBlocks();
-            }
-            FindObjectOfType<AudioManager>().Play("BoxDrop");
-            board.SpawnNewPiece();
+            //Rearrange
+            board.ReorderBlock(activeBlocks);
+
+            //Destroy and create
+            //foreach (Block block in activeBlocks)
+            //{
+            //    block.Destroy();
+            //}
+            //board.SpawnNewPiece();
+
             //Play a disapointing sound
+            FindObjectOfType<AudioManager>().Play("BoxDrop");
             board.score = board.score - 4;
             moneyText.text = "Money\nEarned: " + board.score;
         }
