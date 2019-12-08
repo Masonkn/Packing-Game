@@ -1117,6 +1117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeBlocks: []
+  ghostBlocks: []
   board: {fileID: 1405582394}
   moneyText: {fileID: 1443210309}
   pieceAcceleration: 0.97
@@ -1396,6 +1397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tromino: {fileID: 1820280696467730498, guid: fe71389a048cdc246b78e12c20710102, type: 3}
+  ghostPiece: {fileID: 0}
   gameOver: {fileID: 236961626}
   pauseMenu: {fileID: 335009542}
   mainMenuButton: {fileID: 1982542755}
@@ -1755,7 +1757,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 
 --- !u!222 &1443210310

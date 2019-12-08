@@ -16,7 +16,6 @@ public class InputManager : MonoBehaviour
     private void Start()
     {
         activeBlocks = new Block[3];
-
     }
 
     void Update()
@@ -26,7 +25,7 @@ public class InputManager : MonoBehaviour
         {
             FindRestingPlace(blockBottoms);
             FindObjectOfType<AudioManager>().Play("BoxDrop");
-            board.score++;
+            board.score = board.score + 3;
             moneyText.text = "Money\nEarned: " + board.score;
             board.movingDelay *= pieceAcceleration; //Sppeds up piece every time submit is pressed
             if (!board.isFilled())
@@ -38,6 +37,24 @@ public class InputManager : MonoBehaviour
                 ScoreDisplay.UpdateTotalMoney(board.score);
                 ScoreDisplay.UpdateHighScore(board.score);
             }
+        }
+        //else if?
+        if (Input.GetKeyDown(KeyCode.S)) //Skip Piece
+        {
+            //Rearrange
+            board.ReorderBlock(activeBlocks);
+
+            //Destroy and create
+            //foreach (Block block in activeBlocks)
+            //{
+            //    block.Destroy();
+            //}
+            //board.SpawnNewPiece();
+
+            //Play a disapointing sound
+            FindObjectOfType<AudioManager>().Play("BoxDrop");
+            board.score = board.score - 4;
+            moneyText.text = "Money\nEarned: " + board.score;
         }
     }
 

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Block : MonoBehaviour
 {
@@ -35,7 +36,21 @@ public class Block : MonoBehaviour
         }
     }
 
-    public int FindTheDifference()
+    //probably dont need this
+    public void Destroy()
+    {
+        board.DestroyBlock(column, row);
+        onTop = false;
+        column = 1;
+    }
+
+    public void Reorder(int newColumn, int newRow)
+    {
+        board.PlaceBlock(column, row, newColumn, newRow, this.gameObject);
+
+    }
+    
+        public int FindTheDifference()
     {
         return row - FindBottom();
     }
@@ -48,7 +63,7 @@ public class Block : MonoBehaviour
             onTop = false;//Marking the piece as no longer on top
         }  
     }
-
+    
     void StrafePiece()
     {//This code could probably be cleaned up a bit >.>
         if ((column + direction) > board.width - 1 || (column + direction) < 0)//If the pice is at the edge of the board
