@@ -8,7 +8,6 @@ public class ClickSound : MonoBehaviour
 {
 
     public AudioClip firstSound;
-    public AudioClip secondSound;
 
     private Button button { get { return GetComponent<Button>(); } }
     private AudioSource source { get { return GetComponent<AudioSource>(); } }
@@ -27,7 +26,6 @@ public class ClickSound : MonoBehaviour
     {
         source.PlayOneShot(firstSound);
         yield return new WaitForSeconds(firstSound.length);
-        yield return new WaitForSeconds(secondSound.length);
 
     }
 }
