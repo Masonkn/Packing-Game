@@ -18,7 +18,7 @@ public class Block : MonoBehaviour
 
     void Awake()
     {
-        board = FindObjectOfType<Board>();//Since the piece is a prefab, public variables won't work and it needs to find the board once it enter the scene.  Hey, thanks for reading this long comment! :)
+        board = FindObjectOfType<Board>();//Since the piece is a prefab, public variables won't work and it needs to find the board once it enters the scene.  Hey, thanks for reading this long comment! :)
     }
 
     void Start()
@@ -47,7 +47,7 @@ public class Block : MonoBehaviour
     public void Reorder(int newColumn, int newRow)
     {
         board.PlaceBlock(column, row, newColumn, newRow, this.gameObject);
-
+       
     }
     
         public int FindTheDifference()
@@ -55,11 +55,11 @@ public class Block : MonoBehaviour
         return row - FindBottom();
     }
 
-    public void Fall(int highRow)
+    public void Fall(int highestRow)
     {
         if(onTop)
         {
-            board.PlaceBlock(column, row, column, (row - highRow), this.gameObject);//Putting the piece in the right place
+            board.PlaceBlock(column, row, column, (row - highestRow), this.gameObject);//Putting the piece in the right place
             onTop = false;//Marking the piece as no longer on top
         }  
     }
@@ -77,7 +77,7 @@ public class Block : MonoBehaviour
         movingCounter = 0;//reset the timer
     }
 
-    int FindBottom()
+    public int FindBottom()
     {
         int checkFromTop = board.height - 4;
         if(board.gameGrid[column, checkFromTop] != null)

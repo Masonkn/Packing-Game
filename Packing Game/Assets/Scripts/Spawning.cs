@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System;
 
 public class Spawning : MonoBehaviour
 {
@@ -13,21 +14,27 @@ public class Spawning : MonoBehaviour
 
     public InputManager inputManager;
 
+    //private Block ghostblock;
+
     void Start()
     {
         //For some reason this works better because the board script really wants to finish its start function first
         board = FindObjectOfType<Board>();
     }
+    //void Update()
+    //{
+    //    ghostblock = FindObjectOfType<Block>();
+    //}
 
     public void CreateNew()
     {
         SpawnBlock(1, board.height - 2, 0);
         //board.gameGrid[1, board.height - 2] = board.tromino;
 
-        int blockOne = Random.Range(0, 4); //The first block can be placed in any of the four
+        int blockOne = UnityEngine.Random.Range(0, 4); //The first block can be placed in any of the four
         int blockTwo;
         do {
-            blockTwo = Random.Range(0, 4); //The second block cannot be in the same location as the first
+            blockTwo = UnityEngine.Random.Range(0, 4); //The second block cannot be in the same location as the first
         } while (blockTwo == blockOne);
 
         PlaceBlocks(blockOne, 1);
@@ -56,10 +63,16 @@ public class Spawning : MonoBehaviour
     private void SpawnBlock(int x, int y, int spot)
     {
         board.gameGrid[x, y] = board.tromino;//Putting the piece in the (mostly) top, left, center of the array
-
+        GhostBlockSpawner(x,y);
         GameObject block = Instantiate(board.tromino, new Vector2(x, y), Quaternion.identity);//putting the piece in the top left of the screen
         block.GetComponent<Block>().movingDelay = board.movingDelay;//Telling the piece what the moving delay is currently
         block.layer = 2;
         inputManager.activeBlocks[spot] = block.GetComponent<Block>();
+    }
+
+    private void GhostBlockSpawner(int row, int column) //needs to spawn every time normal blocks spawn, just at the bottom of the gamegrid.
+    {
+        int bottom = row;// - ghostblock.FindBottom(); //needs to know how far down the bottom is.
+        board.SpawnGhostBlock(bottom, column);
     }
 }
