@@ -10,6 +10,8 @@ public class InputManager : MonoBehaviour
     public Board board;
     public Text moneyText;
     public float pieceAcceleration = .99f;
+    public float musicAcceleration = .05f;
+    public AudioSource musicSource;
 
     private AudioManager audioManager;
 
@@ -23,22 +25,9 @@ public class InputManager : MonoBehaviour
         List<int> blockBottoms = new List<int>();
         if (Input.GetButtonDown("Submit") && Board.isInputEnabled)
         {
-            FindRestingPlace(blockBottoms);
-            FindObjectOfType<AudioManager>().Play("BoxDrop");
-            board.score = board.score + 3;
-            moneyText.text = "Money\nEarned: " + board.score;
-            board.movingDelay *= pieceAcceleration; //Sppeds up piece every time submit is pressed
-            if (!board.isFilled())
-            {
-                board.SpawnNewPiece();
-            }
-            else
-            {
-                ScoreDisplay.UpdateTotalMoney(board.score);
-                ScoreDisplay.UpdateHighScore(board.score);
-            }
+            MainAction(blockBottoms);
         }
-        //else if?
+
         if (Input.GetKeyDown(KeyCode.S)) //Skip Piece
         {
             //Rearrange
@@ -55,6 +44,25 @@ public class InputManager : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("BoxDrop");
             board.score = board.score - 4;
             moneyText.text = "Money\nEarned: " + board.score;
+        }
+    }
+
+    void MainAction(List<int> blockBottoms)
+    {
+        FindRestingPlace(blockBottoms);
+        FindObjectOfType<AudioManager>().Play("BoxDrop");
+        board.score = board.score + 3;
+        moneyText.text = "Money\nEarned: " + board.score;
+        board.movingDelay *= pieceAcceleration; //Sppeds up piece every time submit is pressed
+        musicSource.pitch += musicAcceleration;
+        if (!board.isFilled())
+        {
+            board.SpawnNewPiece();
+        }
+        else
+        {
+            ScoreDisplay.UpdateTotalMoney(board.score);
+            ScoreDisplay.UpdateHighScore(board.score);
         }
     }
 
