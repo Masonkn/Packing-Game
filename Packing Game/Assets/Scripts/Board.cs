@@ -73,14 +73,7 @@ public class Board : MonoBehaviour
         }
         return isfilled;
     }
-
-    public void DestroyBlock(int column, int row)
-    {
-        //DestroyImmediate(gameGrid[column, row]);
-        Destroy(gameGrid[column, row]);
-        gameGrid[column, row] = null;
-    }
-
+    
     public void LevelEnd(bool levelEnd)
     {
         if (levelEnd)

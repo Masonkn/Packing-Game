@@ -32,14 +32,7 @@ public class InputManager : MonoBehaviour
         {
             //Rearrange
             board.ReorderBlock(activeBlocks);
-
-            //Destroy and create
-            //foreach (Block block in activeBlocks)
-            //{
-            //    block.Destroy();
-            //}
-            //board.SpawnNewPiece();
-
+            
             //Play a disapointing sound
             FindObjectOfType<AudioManager>().Play("BoxDrop");
             board.score = board.score - 4;
