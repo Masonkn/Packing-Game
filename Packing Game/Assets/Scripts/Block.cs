@@ -35,19 +35,13 @@ public class Block : MonoBehaviour
             StrafePiece();
         }
     }
-
-    //probably dont need this
-    public void Destroy()
-    {
-        board.DestroyBlock(column, row);
-        onTop = false;
-        column = 1;
-    }
-
+    
     public void Reorder(int newColumn, int newRow)
     {
         board.PlaceBlock(column, row, newColumn, newRow, this.gameObject);
-       
+        row = newRow;
+        column = newColumn;
+        direction = 1;
     }
     
     public int FindTheDifference()
