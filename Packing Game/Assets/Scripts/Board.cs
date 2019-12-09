@@ -54,6 +54,7 @@ public class Board : MonoBehaviour
         BuildButtons();
     }
 
+
     private void BuildButtons() //TODO: this isn't working for some reason...
     {
         GameObject.Instantiate(pauseButton, new Vector2(0,0), Quaternion.identity);
@@ -174,18 +175,9 @@ public class Board : MonoBehaviour
         gameGrid[oldColumn, oldRow] = null;
         gameGrid[column, row] = block;
         block.transform.position = new Vector2(column, row);
-        //PlaceGhostBlock(column,row - blockscript.FindTheDifference(),this.gameObject);
+        //PlaceGhostBlock(column,tromino.FindGhost);
     }
 
-    public void PlaceGhostBlock(int column, int row, GameObject block) //Same as PlaceBlock but it does not update the gameGrid array.
-    {
-        block.transform.position = new Vector2(column, row);
-    }
-
-    public void SpawnGhostBlock(int column, int row) //This needs to spawn on the findrestingplace location everytime a piece moves.
-    {
-        GameObject.Instantiate(ghostPiece, new Vector2(column, row), Quaternion.identity);
-    }
 
     public void Pause()
     {

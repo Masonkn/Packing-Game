@@ -13,7 +13,7 @@ public class Spawning : MonoBehaviour
     private Board board;
 
     public InputManager inputManager;
-    public Block ghostblock;
+    public GameObject ghostPiece;
 
     void Start()
     {
@@ -62,16 +62,15 @@ public class Spawning : MonoBehaviour
     private void SpawnBlock(int x, int y, int spot)
     {
         board.gameGrid[x, y] = board.tromino;//Putting the piece in the (mostly) top, left, center of the array
-        //GhostBlockSpawner(x,y);
         GameObject block = Instantiate(board.tromino, new Vector2(x, y), Quaternion.identity);//putting the piece in the top left of the screen
         block.GetComponent<Block>().movingDelay = board.movingDelay;//Telling the piece what the moving delay is currently
         block.layer = 2;
         inputManager.activeBlocks[spot] = block.GetComponent<Block>();
+        SpawnGhostBlock(x, y);
     }
 
-    private void GhostBlockSpawner(int row, int column) //needs to spawn every time normal blocks spawn, just at the bottom of the gamegrid.
+    public void SpawnGhostBlock(int column, int row) //This needs to spawn on the findrestingplace location everytime a piece moves.
     {
-        int bottom = ghostblock.FindTheDifference(); //needs to know how far down the bottom is.
-        board.SpawnGhostBlock(bottom, column);
+        GameObject.Instantiate(ghostPiece, new Vector2(column, ghostPiece.GetComponent<GhostPiece>().FindGhostDifferenceInt()), Quaternion.identity);
     }
 }

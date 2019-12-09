@@ -75,12 +75,13 @@ public class Block : MonoBehaviour
         board.PlaceBlock(column, row, column + direction, row, this.gameObject);//move piece to the right and left
         column += direction;//Update the column
         movingCounter = 0;//reset the timer
+        //GhostBlockPlacer(FindGhostDifferenceInt());
     }
 
     public int FindBottom()
     {
         int checkFromTop = board.height - 4;
-        if(board.gameGrid[column, checkFromTop] != null)
+        if(board.gameGrid[column, checkFromTop] != null) //checking for fill line.
         {
             onTop = false;
             //board.LevelEnd(true);
