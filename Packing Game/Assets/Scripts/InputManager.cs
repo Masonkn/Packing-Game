@@ -68,10 +68,15 @@ public class InputManager : MonoBehaviour
         //Finds the highest row of all blocks
         int highestRow = Math.Min(Math.Min(blockBottoms[0], blockBottoms[1]), blockBottoms[2]);
         //Each block falls the same number of spaces
+        CallFall(highestRow);
+        
+    }
+
+    private void CallFall(int highestRow)
+    {
         foreach (Block block in activeBlocks)
         {
             block.Fall(highestRow);
         }
-        
     }
 }

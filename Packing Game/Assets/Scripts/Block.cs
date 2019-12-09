@@ -50,7 +50,7 @@ public class Block : MonoBehaviour
        
     }
     
-        public int FindTheDifference()
+    public int FindTheDifference()
     {
         return row - FindBottom();
     }
