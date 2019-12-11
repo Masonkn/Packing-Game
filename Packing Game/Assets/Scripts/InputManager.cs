@@ -28,7 +28,7 @@ public class InputManager : MonoBehaviour
             MainAction(blockBottoms);
         }
 
-        if (Input.GetKeyDown(KeyCode.S)) //Skip Piece
+        if (Input.GetKeyDown(KeyCode.S) && !(board.score - 4 < 0)) //Skip Piece 
         {
             //Rearrange
             board.ReorderBlock(activeBlocks);
