@@ -20,10 +20,6 @@ public class Spawning : MonoBehaviour
         //For some reason this works better because the board script really wants to finish its start function first
         board = FindObjectOfType<Board>();
     }
-    //void Update()
-    //{
-    //    ghostblock = FindObjectOfType<Block>();
-    //}
 
     public void CreateNew()
     {
@@ -66,11 +62,11 @@ public class Spawning : MonoBehaviour
         block.GetComponent<Block>().movingDelay = board.movingDelay;//Telling the piece what the moving delay is currently
         block.layer = 2;
         inputManager.activeBlocks[spot] = block.GetComponent<Block>();
-        SpawnGhostBlock(x, y);
+        SpawnGhostBlock(x, block);
     }
 
-    public void SpawnGhostBlock(int column, int row) //This needs to spawn on the findrestingplace location everytime a piece moves.
+    public void SpawnGhostBlock(int column, GameObject block) //This needs to spawn on the findrestingplace location everytime a piece moves.
     {
-        GameObject.Instantiate(ghostPiece, new Vector2(column, ghostPiece.GetComponent<GhostPiece>().FindGhostDifferenceInt()), Quaternion.identity);
+        GameObject.Instantiate(ghostPiece, new Vector2(column, ghostPiece.GetComponent<GhostBlock>().FindGhostDifferenceInt(board)), Quaternion.identity, block.transform); //ghostPiece.GetComponent<GhostBlock>().FindGhostDifferenceInt(board))
     }
 }

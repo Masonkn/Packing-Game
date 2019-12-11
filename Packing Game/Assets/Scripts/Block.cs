@@ -8,7 +8,7 @@ public class Block : MonoBehaviour
 {
     private Board board;
     private int column;
-    private int row;
+    public int row;
     private int checkedRow;//A number used to see if a row is empty
     private int direction = 1;//To track whether the piece is moving right or left
     private float movingCounter;//A timer to see if it should move
@@ -33,6 +33,7 @@ public class Block : MonoBehaviour
         if (movingCounter > movingDelay && onTop)//If a certain amount of time has passed
         {
             StrafePiece();
+            //board.GetComponent<Spawning>().ghostPiece.GetComponent<GhostBlock>().PlaceGhostBlock(column, row, , board);
         }
     }
     
