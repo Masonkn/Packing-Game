@@ -19,7 +19,7 @@ public class ClickSound : MonoBehaviour
         source.playOnAwake = false;
        
 
-        button.onClick.AddListener(() => StartCoroutine(FullyPlaySound()));
+        //button.onClick.AddListener(() => StartCoroutine(FullyPlaySound()));
     }
     
     IEnumerator FullyPlaySound()

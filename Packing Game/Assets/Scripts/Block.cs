@@ -86,7 +86,7 @@ public class Block : MonoBehaviour
             //board.LevelEnd(true);
         }
 
-        while (board.gameGrid[column, checkFromTop] == null)//  checkFromTop == 0)//If the row is not empty
+        while (board.gameGrid[column, checkFromTop] == null)//If the row is not empty
         {
            
             checkFromTop--;//try the one below

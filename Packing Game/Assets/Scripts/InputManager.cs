@@ -22,12 +22,6 @@ public class InputManager : MonoBehaviour
 
     void Update()
     {
-        List<int> blockBottoms = new List<int>();
-        if (Input.GetButtonDown("Submit") && Board.isInputEnabled)
-        {
-            MainAction(blockBottoms);
-        }
-
         if (Input.GetKeyDown(KeyCode.S) && !(board.score - 4 < 0)) //Skip Piece 
         {
             //Rearrange
@@ -40,22 +34,27 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    void MainAction(List<int> blockBottoms)
+    public void MainAction()
     {
-        FindRestingPlace(blockBottoms);
-        FindObjectOfType<AudioManager>().Play("BoxDrop");
-        board.score = board.score + 3;
-        moneyText.text = "Money\nEarned: " + board.score;
-        board.movingDelay *= pieceAcceleration; //Sppeds up piece every time submit is pressed
-        musicSource.pitch += musicAcceleration;
-        if (!board.isFilled())
+        List<int> blockBottoms = new List<int>();
+        if (Board.isInputEnabled)
         {
-            board.SpawnNewPiece();
-        }
-        else
-        {
-            ScoreDisplay.UpdateTotalMoney(board.score);
-            ScoreDisplay.UpdateHighScore(board.score);
+
+            FindRestingPlace(blockBottoms);
+            FindObjectOfType<AudioManager>().Play("BoxDrop");
+            board.score = board.score + 3;
+            moneyText.text = "Money\nEarned: " + board.score;
+            board.movingDelay *= pieceAcceleration; //Sppeds up piece every time submit is pressed
+            musicSource.pitch += musicAcceleration;
+            if (!board.isFilled())
+            {
+                board.SpawnNewPiece();
+            }
+            else
+            {
+                ScoreDisplay.UpdateTotalMoney(board.score);
+                ScoreDisplay.UpdateHighScore(board.score);
+            }
         }
     }
 
