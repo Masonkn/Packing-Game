@@ -12,6 +12,7 @@ public class InputManager : MonoBehaviour
     public float pieceAcceleration = .99f;
     public float musicAcceleration = .05f;
     public AudioSource musicSource;
+    public GameObject tutorialText;
 
     private AudioManager audioManager;
 
@@ -55,6 +56,11 @@ public class InputManager : MonoBehaviour
                 ScoreDisplay.UpdateTotalMoney(board.score);
                 ScoreDisplay.UpdateHighScore(board.score);
             }
+            Destroy(tutorialText);
+
+            GameObject[] gosts = GameObject.FindGameObjectsWithTag("destroyus");
+            foreach (GameObject gost in gosts)
+                Destroy(gost);
         }
     }
 
