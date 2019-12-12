@@ -92,6 +92,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced91ceb4c0a1c547962ae764eef0f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  column: 0
+  row: 0
   ghostPiece: {fileID: 607498738214290998, guid: fdbe2d5363acf274e90546a338c33750,
     type: 3}
   movingDelay: 0

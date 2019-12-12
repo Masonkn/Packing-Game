@@ -12,12 +12,18 @@ public class GhostBlock : MonoBehaviour
         //board = FindObjectOfType<Board>();//Since the piece is a prefab, public variables won't work and it needs to find the board once it enters the scene.  Hey, thanks for reading this long comment! :)
         block = FindObjectOfType<Block>();
     }
-
-    public int FindGhostDifferenceInt(Board board)
+    private void Update()
     {
-        int checkFromTop = board.height - 3;
-        while (board.gameGrid[board.width-1, checkFromTop] == null)
-            //checkFromTop == 0) If the row is not empty
+        if (Input.GetButtonDown("Submit") && Board.isInputEnabled)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public int FindGhostDifferenceInt(Board board, int column)
+    {
+        int checkFromTop = board.height - 4;
+        while (board.gameGrid[column, checkFromTop] == null)
         {
             checkFromTop--;//try the one below
                            //dont let the counter check below zero
@@ -29,10 +35,8 @@ public class GhostBlock : MonoBehaviour
         }
         return  checkFromTop+1;
     }
-    public void PlaceGhostBlock(int column, int row, GameObject block, Board board) //Same as PlaceBlock but it does not update the gameGrid array.
+    public void PlaceGhostBlock(int column, GameObject block, Board board) //Same as PlaceBlock but it does not update the gameGrid array.
     {
-        block.transform.position = new Vector2(column, FindGhostDifferenceInt(board));
+        this.gameObject.transform.position = new Vector2(column, FindGhostDifferenceInt(board, column));
     }
-
-
 }

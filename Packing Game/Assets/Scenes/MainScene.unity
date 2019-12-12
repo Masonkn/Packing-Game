@@ -1485,7 +1485,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputManager: {fileID: 1337851168}
-  ghostblock: {fileID: 0}
+  ghostPiece: {fileID: 607498738214290998, guid: fdbe2d5363acf274e90546a338c33750,
+    type: 3}
 --- !u!114 &1405582394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1499,8 +1500,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tromino: {fileID: 1820280696467730498, guid: fe71389a048cdc246b78e12c20710102, type: 3}
-  ghostPiece: {fileID: 607498738214290998, guid: fdbe2d5363acf274e90546a338c33750,
-    type: 3}
   gameOver: {fileID: 236961626}
   pauseMenu: {fileID: 335009542}
   mainMenuButton: {fileID: 1982542755}

@@ -52,11 +52,6 @@ public class Board : MonoBehaviour
         LevelEnd(false);
         BuildButtons();
     }
-    //public int TellGhostPieceDistance()
-    //{
-    //    int realheight = height - 4;
-    //    return realheight - piece.Find;
-    //}
 
 
     private void BuildButtons() //TODO: this isn't working for some reason...

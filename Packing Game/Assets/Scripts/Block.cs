@@ -7,12 +7,14 @@ using Random = UnityEngine.Random;
 public class Block : MonoBehaviour
 {
     private Board board;
-    private int column;
+    public int column;
     public int row;
     private int checkedRow;//A number used to see if a row is empty
     private int direction = 1;//To track whether the piece is moving right or left
     private float movingCounter;//A timer to see if it should move
     private bool onTop = true;
+    public GameObject ghostPiece;
+
 
     public float movingDelay;
 
@@ -25,6 +27,8 @@ public class Block : MonoBehaviour
     {
         column = (int)transform.position.x;//Figuring out it's position
         row = (int)transform.position.y;
+        GameObject.Instantiate(ghostPiece, new Vector2(column, ghostPiece.GetComponent<GhostBlock>().FindGhostDifferenceInt(board, column)), Quaternion.identity, this.gameObject.transform); //ghostPiece.GetComponent<GhostBlock>().FindGhostDifferenceInt(board))
+
     }
 
     void Update()
@@ -33,7 +37,7 @@ public class Block : MonoBehaviour
         if (movingCounter > movingDelay && onTop)//If a certain amount of time has passed
         {
             StrafePiece();
-            //board.GetComponent<Spawning>().ghostPiece.GetComponent<GhostBlock>().PlaceGhostBlock(column, row, , board);
+            //ghostPiece.GetComponent<GhostBlock>().PlaceGhostBlock(column, this.gameObject, board);
         }
     }
     
