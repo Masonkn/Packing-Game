@@ -53,8 +53,6 @@ public class Board : MonoBehaviour
         BuildButtons();
     }
 
-
-
     private void BuildButtons() //TODO: this isn't working for some reason...
     {
         GameObject.Instantiate(pauseButton, new Vector2(0,0), Quaternion.identity);

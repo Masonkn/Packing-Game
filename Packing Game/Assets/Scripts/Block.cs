@@ -6,17 +6,18 @@ using Random = UnityEngine.Random;
 
 public class Block : MonoBehaviour
 {
-    private Board board;
     public int column;
     public int row;
+    public float movingDelay;
+    public GameObject ghostPiece;
+
+    private Board board;
+    private GameObject child;
+    private GhostBlock childScript;
     private int checkedRow;//A number used to see if a row is empty
     private int direction = 1;//To track whether the piece is moving right or left
     private float movingCounter;//A timer to see if it should move
     private bool onTop = true;
-    public GameObject ghostPiece;
-
-
-    public float movingDelay;
 
     void Awake()
     {
@@ -74,7 +75,15 @@ public class Block : MonoBehaviour
         board.PlaceBlock(column, row, column + direction, row, this.gameObject);//move piece to the right and left
         column += direction;//Update the column
         movingCounter = 0;//reset the timer
-        //GhostBlockPlacer(FindGhostDifferenceInt());
+
+        childScript = GetComponentInChildren<GhostBlock>();
+        child = childScript.gameObject;
+
+        child.transform.position = new Vector2(column, childScript.FindGhostDifferenceInt(board, column));
+
+        //GameObject[] ghosts = GameObject.FindGameObjectsWithTag("destroyus");
+        //foreach (GameObject ghost in ghosts)
+        //    ghost.transform.position = new Vector2(column, ghost.GetComponent<GhostBlock>().FindGhostDifferenceInt(board, column));
     }
 
     public int FindBottom()
@@ -98,6 +107,4 @@ public class Block : MonoBehaviour
         }
         return checkFromTop + 1;
     }
-
-
 }
