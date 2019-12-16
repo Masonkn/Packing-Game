@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1820280696467730498}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.2, y: 3.2, z: 1}
+  m_LocalScale: {x: 1.05, y: 1.05, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -94,6 +94,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   column: 0
   row: 0
+  movingDelay: 0
   ghostPiece: {fileID: 607498738214290998, guid: fdbe2d5363acf274e90546a338c33750,
     type: 3}
-  movingDelay: 0
+  boxes:
+  - {fileID: 21300000, guid: a8ebce4878ad9ca4c95146f6bca7765d, type: 3}
+  - {fileID: 21300000, guid: 24ecc5cb06334314ea08cfaeaad151fa, type: 3}
+  - {fileID: 21300000, guid: 373e68c90f8efd940be042ff19a142cb, type: 3}
+  - {fileID: 21300000, guid: a751162f398556d47b9d50c637a92b2a, type: 3}
+  - {fileID: 21300000, guid: 07100a22ef0b9f246b9eee227c727796, type: 3}

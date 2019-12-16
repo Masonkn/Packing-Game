@@ -62,6 +62,7 @@ public class Spawning : MonoBehaviour
         block.GetComponent<Block>().movingDelay = board.movingDelay;//Telling the piece what the moving delay is currently
         block.layer = 2;
         inputManager.activeBlocks[spot] = block.GetComponent<Block>();
+        block.GetComponent<Block>().SpriteRandomizer();
         //SpawnGhostBlock(x, block);
     }
 
