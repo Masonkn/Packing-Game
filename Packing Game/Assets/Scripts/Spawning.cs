@@ -59,7 +59,7 @@ public class Spawning : MonoBehaviour
     {
         board.gameGrid[x, y] = board.tromino;//Putting the piece in the (mostly) top, left, center of the array
         GameObject block = Instantiate(board.tromino, new Vector2(x, y), Quaternion.identity);//putting the piece in the top left of the screen
-        block.GetComponent<Block>().movingDelay = inputManager.movingDelay;//Telling the piece what the moving delay is currently
+        block.GetComponent<Block>().movingDelay = board.movingDelay;//Telling the piece what the moving delay is currently
         block.layer = 2;
         inputManager.activeBlocks[spot] = block.GetComponent<Block>();
         //SpawnGhostBlock(x, block);

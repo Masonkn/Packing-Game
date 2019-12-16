@@ -13,9 +13,6 @@ public class InputManager : MonoBehaviour
     public float musicAcceleration = .05f;
     public AudioSource musicSource;
     public GameObject tutorialText;
-    public float movingDelay = .2f;
-    private float movingCounter;//A timer to see if it should move
-
 
     private AudioManager audioManager;
 
@@ -40,16 +37,6 @@ public class InputManager : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("BoxDrop");
             board.score = board.score - 4;
             moneyText.text = "Money\nEarned: " + board.score;
-        }
-
-        movingCounter += Time.deltaTime;//Add on the slice of a second since the last frame.
-        if (movingCounter > movingDelay)//If a certain amount of time has passed
-        {
-            foreach (Block block in activeBlocks)
-            {
-                block.StrafePiece();
-                movingCounter = 0;//reset the timer
-            }
         }
     }
 
@@ -76,7 +63,7 @@ public class InputManager : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("BoxDrop");
             board.score = board.score + 3;
             moneyText.text = "Money\nEarned: " + board.score;
-            movingDelay *= pieceAcceleration; //Sppeds up piece every time submit is pressed
+            board.movingDelay *= pieceAcceleration; //Sppeds up piece every time submit is pressed
             musicSource.pitch += musicAcceleration;
             if (!board.isFilled())
             {

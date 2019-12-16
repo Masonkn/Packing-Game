@@ -16,7 +16,7 @@ public class Block : MonoBehaviour
     private GhostBlock childScript;
     private int checkedRow;//A number used to see if a row is empty
     private int direction = 1;//To track whether the piece is moving right or left
-    //private float movingCounter;//A timer to see if it should move
+    private float movingCounter;//A timer to see if it should move
     private bool onTop = true;
 
     void Awake()
@@ -34,12 +34,12 @@ public class Block : MonoBehaviour
 
     void Update()
     {
-        //movingCounter += Time.deltaTime;//Add on the slice of a second since the last frame.
-        //if (movingCounter > movingDelay && onTop)//If a certain amount of time has passed
-        //{
-        //    StrafePiece();
-        //    //ghostPiece.GetComponent<GhostBlock>().PlaceGhostBlock(column, this.gameObject, board);
-        //}
+        movingCounter += Time.deltaTime;//Add on the slice of a second since the last frame.
+        if (movingCounter > movingDelay && onTop)//If a certain amount of time has passed
+        {
+            StrafePiece();
+            //ghostPiece.GetComponent<GhostBlock>().PlaceGhostBlock(column, this.gameObject, board);
+        }
     }
     
     public void Reorder(int newColumn, int newRow)
@@ -64,7 +64,7 @@ public class Block : MonoBehaviour
         }  
     }
     
-    public void StrafePiece()
+    void StrafePiece()
     {//This code could probably be cleaned up a bit >.>
         if ((column + direction) > board.width - 1 || (column + direction) < 0)//If the pice is at the edge of the board
         {
@@ -74,7 +74,8 @@ public class Block : MonoBehaviour
         }
         board.PlaceBlock(column, row, column + direction, row, this.gameObject);//move piece to the right and left
         column += direction;//Update the column
-        
+        movingCounter = 0;//reset the timer
+
         GhostBlockMover();   
     }
 
