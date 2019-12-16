@@ -26,7 +26,6 @@ public class Board : MonoBehaviour
     public Spawning piece;
     public int width;//width and height of the board
     public int height;
-    public float movingDelay;
     public int score;
     public static bool isInputEnabled = true;
     public static bool isPauseEnabled = true;
