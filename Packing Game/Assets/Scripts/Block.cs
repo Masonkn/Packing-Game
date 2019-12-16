@@ -76,14 +76,14 @@ public class Block : MonoBehaviour
         column += direction;//Update the column
         movingCounter = 0;//reset the timer
 
+        GhostBlockMover();   
+    }
+
+    void GhostBlockMover()
+    {
         childScript = GetComponentInChildren<GhostBlock>();
         child = childScript.gameObject;
-
         child.transform.position = new Vector2(column, childScript.FindGhostDifferenceInt(board, column));
-
-        //GameObject[] ghosts = GameObject.FindGameObjectsWithTag("destroyus");
-        //foreach (GameObject ghost in ghosts)
-        //    ghost.transform.position = new Vector2(column, ghost.GetComponent<GhostBlock>().FindGhostDifferenceInt(board, column));
     }
 
     public int FindBottom()
