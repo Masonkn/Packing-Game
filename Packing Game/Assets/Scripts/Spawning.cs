@@ -65,11 +65,11 @@ public class Spawning : MonoBehaviour
         block.layer = 2;
         inputManager.activeBlocks[spot] = block.GetComponent<Block>();
         block.GetComponent<Block>().SpriteChanger();
-        //SpawnGhostBlock(x, block);
+        SpawnGhostBlock(x, block);
     }
 
-    //public void SpawnGhostBlock(int column, GameObject block) //This needs to spawn on the findrestingplace location everytime a piece moves.
-    //{
-    //    GameObject.Instantiate(ghostPiece, new Vector2(column, ghostPiece.GetComponent<GhostBlock>().FindGhostDifferenceInt(board)), Quaternion.identity, block.transform); //ghostPiece.GetComponent<GhostBlock>().FindGhostDifferenceInt(board))
-    //}
+    public void SpawnGhostBlock(int column, GameObject block) //This needs to spawn on the findrestingplace location everytime a piece moves.
+    {
+        GameObject.Instantiate(ghostPiece, new Vector2(column, ghostPiece.GetComponent<GhostBlock>().FindGhostDifferenceInt(board, column)), Quaternion.identity, block.transform); //ghostPiece.GetComponent<GhostBlock>().FindGhostDifferenceInt(board))
+    }
 }
