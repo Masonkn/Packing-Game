@@ -40,6 +40,20 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    public void SkipPiece()
+    {
+        if (!(board.score - 4 < 0)) //Skip Piece 
+        {
+            //Rearrange
+            board.ReorderBlock(activeBlocks);
+
+            //Play a disapointing sound
+            FindObjectOfType<AudioManager>().Play("BoxDrop");
+            board.score = board.score - 4;
+            moneyText.text = "Money\nEarned: " + board.score;
+        }
+    }
+
     public void MainAction()
     {
         List<int> blockBottoms = new List<int>();
