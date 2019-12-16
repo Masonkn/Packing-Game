@@ -36,8 +36,6 @@ public class Spawning : MonoBehaviour
         PlaceBlocks(blockTwo, 2);
     }
 
-
-
     private void PlaceBlocks(int blockNum, int spot)//Creates a piece
     {
         switch (blockNum)
@@ -64,7 +62,6 @@ public class Spawning : MonoBehaviour
         block.GetComponent<Block>().movingDelay = inputManager.movingDelay;//Telling the piece what the moving delay is currently
         block.layer = 2;
         inputManager.activeBlocks[spot] = block.GetComponent<Block>();
-        block.GetComponent<Block>().SpriteChanger();
         //SpawnGhostBlock(x, block);
     }
 
