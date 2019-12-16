@@ -23,6 +23,11 @@ public class InputManager : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetButtonDown("Submit"))
+        {
+            MainAction();
+        }
+
         if (Input.GetKeyDown(KeyCode.S) && !(board.score - 4 < 0)) //Skip Piece 
         {
             //Rearrange
@@ -40,7 +45,6 @@ public class InputManager : MonoBehaviour
         List<int> blockBottoms = new List<int>();
         if (Board.isInputEnabled)
         {
-
             FindRestingPlace(blockBottoms);
             FindObjectOfType<AudioManager>().Play("BoxDrop");
             board.score = board.score + 3;
@@ -58,9 +62,9 @@ public class InputManager : MonoBehaviour
             }
             Destroy(tutorialText);
 
-            GameObject[] gosts = GameObject.FindGameObjectsWithTag("destroyus");
-            foreach (GameObject gost in gosts)
-                Destroy(gost);
+            GameObject[] ghosts = GameObject.FindGameObjectsWithTag("destroyus");
+            foreach (GameObject ghost in ghosts)
+                Destroy(ghost);
         }
     }
 

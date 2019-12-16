@@ -54,6 +54,7 @@ public class Board : MonoBehaviour
     }
 
 
+
     private void BuildButtons() //TODO: this isn't working for some reason...
     {
         GameObject.Instantiate(pauseButton, new Vector2(0,0), Quaternion.identity);
@@ -128,6 +129,7 @@ public class Board : MonoBehaviour
             }
         }
     }
+
     public void ReorderBlock(Block[] activeBlocks)
     {
         activeBlocks[0].Reorder(1, height - 2);
@@ -169,7 +171,6 @@ public class Board : MonoBehaviour
         block.transform.position = new Vector2(column, row);
         //PlaceGhostBlock(column,tromino.FindGhost);
     }
-
 
     public void Pause()
     {
