@@ -10,6 +10,8 @@ public class Block : MonoBehaviour
     public int row;
     public float movingDelay;
     public GameObject ghostPiece;
+    public Sprite[] boxes;
+
 
     private Board board;
     private GameObject child;
@@ -18,6 +20,8 @@ public class Block : MonoBehaviour
     private int direction = 1;//To track whether the piece is moving right or left
     //private float movingCounter;//A timer to see if it should move
     private bool onTop = true;
+    private int rand;
+
 
     void Awake()
     {
@@ -28,7 +32,7 @@ public class Block : MonoBehaviour
     {
         column = (int)transform.position.x;//Figuring out it's position
         row = (int)transform.position.y;
-        GameObject.Instantiate(ghostPiece, new Vector2(column, ghostPiece.GetComponent<GhostBlock>().FindGhostDifferenceInt(board, column)), Quaternion.identity, this.gameObject.transform); //ghostPiece.GetComponent<GhostBlock>().FindGhostDifferenceInt(board))
+        //GameObject.Instantiate(ghostPiece, new Vector2(column, ghostPiece.GetComponent<GhostBlock>().FindGhostDifferenceInt(board, column)), Quaternion.identity, this.gameObject.transform); //ghostPiece.GetComponent<GhostBlock>().FindGhostDifferenceInt(board))
 
     }
 
@@ -83,6 +87,11 @@ public class Block : MonoBehaviour
         childScript = GetComponentInChildren<GhostBlock>();
         child = childScript.gameObject;
         child.transform.position = new Vector2(column, childScript.FindGhostDifferenceInt(board, column));
+    }
+    public void SpriteChanger()
+    {
+        rand = UnityEngine.Random.Range(0, boxes.Length);
+        GetComponent<SpriteRenderer>().sprite = boxes[rand];
     }
 
     public int FindBottom()
